@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+  name     String
+
+  team_created Team[]     @relation("team_creator")
+  teams        TeamUser[]
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+}
+
+model Team {
+  id   Int    @id @default(autoincrement())
+  name String
+  slug String @unique
+
+  creator   User @relation("team_creator", fields: [creatorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  creatorId Int
+
+  users     TeamUser[]
+  locations HiveLocation[]
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+}
+
+model TeamUser {
+  userId Int
+  teamId Int
+
+  user User @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  team Team @relation(fields: [teamId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@id([userId, teamId])
+}
+
+model HiveLocation {
+  id Int @id @default(autoincrement())
+
+  name String
+  slug String @unique
+
+  lat Decimal? @db.Decimal(10, 8)
+  lon Decimal? @db.Decimal(10, 8)
+
+  team   Team @relation(fields: [teamId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  teamId Int
+
+  hives Hive[]
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+}
+
+model Hive {
+  id Int @id @default(autoincrement())
+
+  name      String
+  slug      String @unique
+  desc      String
+  rawWeight Float  @default(0)
+
+  location   HiveLocation @relation(fields: [locationId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  locationId Int
+
+  inspections Inspection[]
+  device      Device?
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+}
+
+model Inspection {
+  id Int @id @default(autoincrement())
+
+  timestamp      DateTime @db.Timestamptz(3)
+  verifiedByUser Boolean  @default(false)
+  impression     Int      @db.SmallInt
+  notes          String   @db.Text
+
+  hive   Hive @relation(fields: [hiveId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  hiveId Int
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+}
+
+model Device {
+  id Int @id @default(autoincrement())
+
+  hive   Hive @relation(fields: [hiveId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  hiveId Int  @unique
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+}

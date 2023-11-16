@@ -1,0 +1,15 @@
+{
+  "name": "system",
+  "version": "1.0.0",
+  "description": "Monorepo",
+  "scripts": {
+    "check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "en": "English",
+  "de": "German",
+  "welcome": "Welcome!",
+  "about": "About",
+  "layouts": {
+    "title": "{title} {'|'} My page"
+  },
+  "home": {
+    "title": "Nuxt Routing set up successfully!",
+    "route": "Current route: {path}"
+  },
+  "refresh": "Refresh"
+}

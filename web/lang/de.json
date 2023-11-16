@@ -1,0 +1,14 @@
+{
+  "en": "Englisch",
+  "de": "Deutsch",
+  "welcome": "Willkommen!",
+  "about": "Über",
+  "layouts": {
+    "title": "{title} {'|'} Meine Seite"
+  },
+  "home": {
+    "title": "Nuxt Routing erfolgreich eingerichtet!",
+    "route": "Aktuelle Route: {path}"
+  },
+  "refresh": "Neu laden"
+}

@@ -7,10 +7,11 @@
     "format": "prettier --write ."
   },
   "workspaces": [
-    "db"
+    "db",
+    "web"
   ],
   "keywords": [],
-  "author": "",
+  "author": "Pascal Syma <pascal@syma.dev> (https://syma.dev/)",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.9.0",

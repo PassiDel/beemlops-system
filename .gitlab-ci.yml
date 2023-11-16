@@ -22,9 +22,23 @@ cache:
 
 stages:
   - check
+  - build
 
 prettier:
   stage: check
   <<: *npm-job
   script:
     - npm run check
+
+eslint:
+  stage: check
+  <<: *npm-job
+  script:
+    - node_modules/eslint/bin/eslint.js web/
+
+build-nuxt:
+  stage: build
+  <<: *npm-job
+  script:
+    - cd web
+    - npm run build

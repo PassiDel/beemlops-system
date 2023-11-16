@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 
-export function createContext(): Promise<Context>;
+export function createContext(): Context;
 
 export * from '.prisma/client/index.d';
 

@@ -30,3 +30,9 @@ files: `{**/*,*}.{js,ts,jsx,tsx,html,css,json,md,vue,astro}`. After that enable 
 - [DB](./db)
   - ORM based on [Prisma.js](https://www.prisma.io/)
   - Represents the "Meta"-DB, without the time-series data
+- [Webapp](./web)
+  - Nuxt Webapp (based on Vue.js)
+  - SSR
+  - i18n
+  - Server API
+  - ...

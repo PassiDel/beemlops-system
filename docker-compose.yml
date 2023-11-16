@@ -1,0 +1,22 @@
+version: '3.9'
+
+volumes:
+  pg-db:
+
+networks:
+  internal:
+
+services:
+  pgdb:
+    image: postgres:${POSTGRES_VERSION}
+    volumes:
+      - pg-db:/var/lib/postgresql
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASS}
+    restart: always
+    networks:
+      - internal
+    healthcheck:
+      test: 'PGPASSWORD=${POSTGRES_PASS} pg_isready -h 127.0.0.1 -U ${POSTGRES_USER} -d ${POSTGRES_DB}'

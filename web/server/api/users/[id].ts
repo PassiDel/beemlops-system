@@ -2,6 +2,7 @@ import { useValidatedParams, z, zh } from 'h3-zod';
 import { prisma } from '~/server/utils/prisma';
 
 export default defineEventHandler(async (event) => {
+  await requireUserSession(event);
   const { id } = await useValidatedParams(
     event,
     z.object({

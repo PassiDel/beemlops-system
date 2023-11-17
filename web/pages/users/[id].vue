@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
+definePageMeta({
+  middleware: 'auth'
+});
 
 const { id } = useRoute().params;
 

@@ -5,10 +5,16 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/eslint-module',
     '@nuxtjs/i18n',
-    '@pinia-plugin-persistedstate/nuxt'
+    '@pinia-plugin-persistedstate/nuxt',
+    'nuxt-auth-utils'
   ],
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
+  },
+  runtimeConfig: {
+    public: {
+      passwordMinLength: 10
+    }
   },
   eslint: {
     cache: true,

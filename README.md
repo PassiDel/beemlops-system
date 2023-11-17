@@ -35,4 +35,4 @@ files: `{**/*,*}.{js,ts,jsx,tsx,html,css,json,md,vue,astro}`. After that enable 
   - SSR
   - i18n
   - Server API
-  - ...
+  - Auth (using sealed cookies)

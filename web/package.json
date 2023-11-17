@@ -4,10 +4,12 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --dotenv ../.env",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix ."
   },
   "devDependencies": {
     "@mono/db": "^1.0.0",
@@ -17,9 +19,11 @@
     "@nuxtjs/i18n": "^8.0.0-rc.5",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "@pinia/nuxt": "^0.5.1",
+    "argon2": "^0.31.2",
     "eslint-config-prettier": "^9.0.0",
     "h3-zod": "^0.5.2",
     "nuxt": "^3.8.1",
+    "nuxt-auth-utils": "^0.0.6",
     "pinia": "^2.1.7",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5",

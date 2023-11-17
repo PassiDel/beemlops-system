@@ -1,9 +1,11 @@
 <script setup lang="ts">
 const localePath = useLocalePath();
+
+const { loggedIn, user } = useUserSession();
 </script>
 <template>
   <div>
-    <h1>{{ $t('welcome') }}</h1>
+    <h1>{{ $t('welcome') }} {{ loggedIn ? user.name : '' }}</h1>
     <LangSwitcher />
 
     <NuxtLink :to="localePath('/')">Home</NuxtLink>
@@ -17,10 +19,12 @@ const localePath = useLocalePath();
 </template>
 
 <style>
+/*noinspection ALL*/
 .page-enter-active,
 .page-leave-active {
   transition: all 0.2s;
 }
+/*noinspection ALL*/
 .page-enter-from,
 .page-leave-to {
   opacity: 0;

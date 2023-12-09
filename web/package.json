@@ -12,6 +12,8 @@
     "lint-fix": "eslint --fix ."
   },
   "devDependencies": {
+    "@influxdata/influxdb-client": "^1.33.2",
+    "@influxdata/influxdb-client-apis": "^1.33.2",
     "@mono/db": "^1.0.0",
     "@mono/queue": "^1.0.0",
     "@nuxt/devtools": "latest",

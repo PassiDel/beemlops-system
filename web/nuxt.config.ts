@@ -15,7 +15,11 @@ export default defineNuxtConfig({
     public: {
       passwordMinLength: 10
     },
-    rabbitUrl: 'amqp://guest:guest@localhost:5672'
+    rabbitUrl: 'amqp://guest:guest@localhost:5672',
+    influxUrl: 'http://localhost:8086',
+    influxToken: '',
+    influxOrg: '',
+    influxBucket: ''
   },
   eslint: {
     cache: true,

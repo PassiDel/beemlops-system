@@ -6,3 +6,6 @@ services:
     ports:
       - '127.0.0.1:${RABBIT_MANAGEMENT_PORT}:15672'
       - '127.0.0.1:${RABBIT_MANAGEMENT_QUEUE}:5672'
+  influx:
+    ports:
+      - '127.0.0.1:${INFLUX_PORT}:8086'

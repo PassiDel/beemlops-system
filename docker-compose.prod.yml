@@ -1,0 +1,53 @@
+networks:
+  web:
+
+services:
+  app:
+    image: todo_system_web:${WEB_VERSION}
+    build:
+      dockerfile: web.Dockerfile
+      context: .
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASS}@pgdb:5432/${POSTGRES_DB}?schema=public
+      - NUXT_SESSION_PASSWORD=${NUXT_SESSION_PASSWORD}
+    depends_on:
+      - pgdb
+    labels:
+      - easyhaproxy.http.host=${WEB_DOMAIN}
+      - easyhaproxy.http.port=80
+      - easyhaproxy.http.localport=3000
+      - easyhaproxy.http.redirect_ssl=true
+      - easyhaproxy.https.host=${WEB_DOMAIN}
+      - easyhaproxy.https.port=443
+      - easyhaproxy.https.localport=3000
+      - easyhaproxy.https.sslcert=${SSL_CERT}
+    networks:
+      - internal
+      - web
+    restart: always
+  lb:
+    image: byjg/easy-haproxy
+    container_name: system_lb
+    deploy:
+      mode: global
+      placement:
+        constraints:
+          - node.role==manager
+      update_config:
+        parallelism: 1
+        order: stop-first
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    environment:
+      - EASYHAPROXY_DISCOVER=docker
+      - EASYHAPROXY_SSL_MODE="loose"
+      - HAPROXY_CUSTOMERRORS="true"
+      - EASYHAPROXY_LOG_LEVEL=WARN
+      - HAPROXY_LOG_LEVEL=WARN
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - web

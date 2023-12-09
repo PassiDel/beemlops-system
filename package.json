@@ -4,7 +4,9 @@
   "description": "Monorepo",
   "scripts": {
     "check": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "build-all": "npm run build --workspaces --if-present",
+    "install-all": "npm install --workspaces  --if-present"
   },
   "workspaces": [
     "db",

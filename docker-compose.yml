@@ -8,6 +8,7 @@ networks:
 
 services:
   pgdb:
+    container_name: system_pgdb
     image: postgres:${POSTGRES_VERSION}
     volumes:
       - pg-db:/var/lib/postgresql

@@ -1,5 +1,8 @@
 image: node:18
 
+services:
+  - docker:dind
+
 .shared: &shared
   tags:
     - docker
@@ -42,3 +45,22 @@ build-nuxt:
   script:
     - cd web
     - npm run build
+
+build-web-main:
+  image: docker:latest
+  stage: build
+  only:
+    - main
+  script:
+    - docker build -f web.Dockerfile -t "todo_system_web:$CI_COMMIT_SHORT_SHA" -t "todo_system_web:$CI_COMMIT_BRANCH" -t "todo_system_web:$CI_COMMIT_TAG" -t "todo_system_web:latest"
+#    - docker push "todo_system_web:latest"
+
+build-web:
+  image: docker:latest
+  stage: build
+  only:
+    - release/*
+    - tags
+  script:
+    - docker build -f web.Dockerfile -t "todo_system_web:$CI_COMMIT_SHORT_SHA" -t "todo_system_web:$CI_COMMIT_BRANCH" -t "todo_system_web:$CI_COMMIT_TAG"
+#    - docker push "todo_system_web:$CI_COMMIT_SHORT_SHA"

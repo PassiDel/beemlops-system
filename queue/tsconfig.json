@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node18",
+  "compilerOptions": {
+    "types": [],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "declaration": true,
+    "strict": true
+  },
+  "exclude": ["node_modules", "dist"]
+}

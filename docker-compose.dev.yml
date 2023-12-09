@@ -2,3 +2,7 @@ services:
   pgdb:
     ports:
       - '127.0.0.1:${POSTGRES_PORT}:5432'
+  queue:
+    ports:
+      - '127.0.0.1:${RABBIT_MANAGEMENT_PORT}:15672'
+      - '127.0.0.1:${RABBIT_MANAGEMENT_QUEUE}:5672'

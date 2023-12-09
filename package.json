@@ -10,7 +10,8 @@
   },
   "workspaces": [
     "db",
-    "web"
+    "web",
+    "queue"
   ],
   "keywords": [],
   "author": "Pascal Syma <pascal@syma.dev> (https://syma.dev/)",

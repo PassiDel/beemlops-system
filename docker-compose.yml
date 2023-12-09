@@ -2,6 +2,7 @@ version: '3.9'
 
 volumes:
   pg-db:
+  rabbitmq:
 
 networks:
   internal:
@@ -21,3 +22,24 @@ services:
       - internal
     healthcheck:
       test: 'PGPASSWORD=${POSTGRES_PASS} pg_isready -h 127.0.0.1 -U ${POSTGRES_USER} -d ${POSTGRES_DB}'
+  queue:
+    image: rabbitmq:3-management-alpine
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq/
+    networks:
+      - internal
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+  worker-demo:
+    image: todo_system_worker_demo:${WEB_VERSION}
+    build:
+      dockerfile: queue-worker.Dockerfile
+      context: .
+    environment:
+      - NUXT_RABBIT_URL=${NUXT_RABBIT_URL}
+    networks:
+      - internal
+    restart: always

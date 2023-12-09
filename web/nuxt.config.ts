@@ -14,7 +14,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       passwordMinLength: 10
-    }
+    },
+    rabbitUrl: 'amqp://guest:guest@localhost:5672'
   },
   eslint: {
     cache: true,

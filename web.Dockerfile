@@ -16,6 +16,7 @@ FROM base as build
 COPY --link package.json package-lock.json ./
 
 COPY --link db ./db
+COPY --link queue ./queue
 COPY --link web ./web
 
 RUN ls -lah

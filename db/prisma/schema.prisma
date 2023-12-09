@@ -81,7 +81,7 @@ model Hive {
   locationId Int
 
   inspections Inspection[]
-  device      Device?
+  device      Device[]
 
   createdAt DateTime  @default(now()) @db.Timestamptz(3)
   updatedAt DateTime  @updatedAt @db.Timestamptz(3)
@@ -108,9 +108,32 @@ model Device {
   id Int @id @default(autoincrement())
 
   hive   Hive @relation(fields: [hiveId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  hiveId Int  @unique
+  hiveId Int
 
-  createdAt DateTime  @default(now()) @db.Timestamptz(3)
-  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
-  deletedAt DateTime? @db.Timestamptz(3)
+  key String
+
+  createdAt    DateTime       @default(now()) @db.Timestamptz(3)
+  updatedAt    DateTime       @updatedAt @db.Timestamptz(3)
+  deletedAt    DateTime?      @db.Timestamptz(3)
+  DeviceSensor DeviceSensor[]
+}
+
+model DeviceSensor {
+  device   Device @relation(fields: [deviceId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  deviceId Int
+
+  sensor   Sensor @relation(fields: [sensorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  sensorId Int
+
+  key String?
+
+  @@id([deviceId, sensorId])
+}
+
+model Sensor {
+  id Int @id @default(autoincrement())
+
+  name         String
+  unit         String
+  DeviceSensor DeviceSensor[]
 }

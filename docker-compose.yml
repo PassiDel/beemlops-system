@@ -55,7 +55,7 @@ services:
       timeout: 30s
       retries: 3
   worker-demo:
-    image: todo_system_worker_demo:${WEB_VERSION}
+    image: 192.168.164.15:5005/beemlops/system/worker/demo:${WEB_VERSION}
     build:
       dockerfile: queue-worker.Dockerfile
       context: .

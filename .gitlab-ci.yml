@@ -9,6 +9,15 @@ image: node:18
     - tags
     - release/*
 
+.docker-job: &docker-job
+  tags:
+    - docker
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
 .npm-job: &npm-job
   <<: *shared
   before_script:
@@ -43,29 +52,25 @@ build-nuxt:
     - cd web
     - npm run build
 
-build-web-main:
-  image: docker:latest
-  tags:
-    - docker
-  services:
-    - docker:dind
+build-image-main:
   stage: build
+  <<: *docker-job
   only:
     - main
   script:
-    - docker build -f web.Dockerfile -t "todo_system_web:$CI_COMMIT_SHORT_SHA" -t "todo_system_web:$CI_COMMIT_BRANCH" -t "todo_system_web:$CI_COMMIT_TAG" -t "todo_system_web:latest"
-#    - docker push "todo_system_web:latest"
+    - docker build --pull -f web.Dockerfile -t "$CI_REGISTRY_IMAGE/web:$CI_COMMIT_SHORT_SHA" -t "$CI_REGISTRY_IMAGE/web:latest" .
+    - docker push -a "$CI_REGISTRY_IMAGE/web"
+    - docker build --pull -f queue-worker.Dockerfile -t "$CI_REGISTRY_IMAGE/worker/demo:$CI_COMMIT_SHORT_SHA" -t "$CI_REGISTRY_IMAGE/worker/demo:latest" .
+    - docker push -a "$CI_REGISTRY_IMAGE/worker/demo"
 
-build-web:
-  image: docker:latest
-  tags:
-    - docker
-  services:
-    - docker:dind
+build-image:
   stage: build
+  <<: *docker-job
   only:
     - release/*
     - tags
   script:
-    - docker build -f web.Dockerfile -t "todo_system_web:$CI_COMMIT_SHORT_SHA" -t "todo_system_web:$CI_COMMIT_BRANCH" -t "todo_system_web:$CI_COMMIT_TAG"
-#    - docker push "todo_system_web:$CI_COMMIT_SHORT_SHA"
+    - docker build --pull -f web.Dockerfile -t "$CI_REGISTRY_IMAGE/web:$CI_COMMIT_SHORT_SHA" .
+    - docker push -a "$CI_REGISTRY_IMAGE/web"
+    - docker build --pull -f queue-worker.Dockerfile -t "$CI_REGISTRY_IMAGE/worker/demo:$CI_COMMIT_SHORT_SHA" .
+    - docker push -a "$CI_REGISTRY_IMAGE/worker/demo"

@@ -3,7 +3,7 @@ networks:
 
 services:
   app:
-    image: todo_system_web:${WEB_VERSION}
+    image: 192.168.164.15:5005/beemlops/system/web:${WEB_VERSION}
     build:
       dockerfile: web.Dockerfile
       context: .

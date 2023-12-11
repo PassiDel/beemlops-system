@@ -6,10 +6,19 @@ export default defineNuxtConfig({
     '@nuxtjs/eslint-module',
     '@nuxtjs/i18n',
     '@pinia-plugin-persistedstate/nuxt',
-    'nuxt-auth-utils'
+    'nuxt-auth-utils',
+    '@vuestic/nuxt',
+    'nuxt-route-meta'
   ],
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
+  },
+  css: ['~/assets/css/main.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {}
+    }
   },
   runtimeConfig: {
     public: {

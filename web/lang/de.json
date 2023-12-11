@@ -3,12 +3,35 @@
   "de": "Deutsch",
   "welcome": "Willkommen!",
   "about": "Über",
+  "default": {
+    "title": "Seite"
+  },
+  "auth": {
+    "logout": "Abmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "name": "Name",
+    "accept": "Akzeptieren"
+  },
   "layouts": {
-    "title": "{title} {'|'} Meine Seite"
+    "title": "{title} {'|'} System"
   },
   "home": {
     "title": "Nuxt Routing erfolgreich eingerichtet!",
     "route": "Aktuelle Route: {path}"
   },
-  "refresh": "Neu laden"
+  "login": {
+    "title": "Anmelden"
+  },
+  "register": {
+    "title": "Registrieren"
+  },
+  "refresh": "Neu laden",
+  "dark_mode": "Dunkler Modus",
+  "cache": {
+    "title": "Cache",
+    "card": {
+      "title": "Cache Antwort"
+    }
+  }
 }

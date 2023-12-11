@@ -3,12 +3,41 @@
   "de": "German",
   "welcome": "Welcome!",
   "about": "About",
+  "default": {
+    "title": "Page"
+  },
+  "auth": {
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "accept": "Accept"
+  },
   "layouts": {
-    "title": "{title} {'|'} My page"
+    "title": "{title} {'|'} System"
   },
   "home": {
     "title": "Nuxt Routing set up successfully!",
     "route": "Current route: {path}"
   },
-  "refresh": "Refresh"
+  "login": {
+    "title": "Login"
+  },
+  "register": {
+    "title": "Register"
+  },
+  "refresh": "Refresh",
+  "dark_mode": "Dark Mode",
+  "cache": {
+    "title": "Cache",
+    "card": {
+      "title": "Cached Response"
+    }
+  },
+  "users": {
+    "title": "Users",
+    "card": {
+      "title": "Users"
+    }
+  }
 }

@@ -33,5 +33,11 @@
     "card": {
       "title": "Cache Antwort"
     }
+  },
+  "users": {
+    "title": "Nutzende",
+    "card": {
+      "title": "Nutzende"
+    }
   }
 }

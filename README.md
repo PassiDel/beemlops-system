@@ -77,6 +77,7 @@ files: `{**/*,*}.{js,ts,jsx,tsx,html,css,json,md,vue,astro}`. After that enable 
       - Influx time-series database
       - RabbitMQ Queue
       - [Queue Worker](./queue)
+      - Redis Storage
     - [prod](./docker-compose.prod.yml)
       - [Webapp](./web)
       - Loadbalancer with SSL

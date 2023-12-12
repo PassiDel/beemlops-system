@@ -15,6 +15,8 @@ services:
       - NUXT_INFLUX_TOKEN=${NUXT_INFLUX_TOKEN}
       - NUXT_INFLUX_ORG=${NUXT_INFLUX_ORG}
       - NUXT_INFLUX_BUCKET=${NUXT_INFLUX_BUCKET}
+      - NUXT_REDIS_HOST=${NUXT_REDIS_HOST}
+      - NUXT_REDIS_PASSWORD=${NUXT_REDIS_PASSWORD}
     depends_on:
       - pgdb
     labels:

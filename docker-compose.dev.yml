@@ -9,3 +9,6 @@ services:
   influx:
     ports:
       - '127.0.0.1:${INFLUX_PORT}:8086'
+  redis:
+    ports:
+      - '127.0.0.1:${REDIS_PORT}:6379'

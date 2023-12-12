@@ -6,7 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev --dotenv ../.env",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "preview": "nuxt preview --dotenv ../.env",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint-fix": "eslint --fix ."

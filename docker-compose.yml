@@ -5,6 +5,7 @@ volumes:
   rabbitmq:
   influx_conf:
   influx_data:
+  redis:
 
 networks:
   internal:
@@ -42,6 +43,17 @@ services:
     restart: always
     healthcheck:
       test: curl --fail http://localhost:8086 || exit 1
+  redis:
+    image: redis:6.2-alpine
+    container_name: system_redis
+    networks:
+      - internal
+    restart: always
+    command: redis-server --save 20 1 --loglevel warning --requirepass ${NUXT_REDIS_PASSWORD}
+    healthcheck:
+      test: redis-cli -a ${NUXT_REDIS_PASSWORD} ping || exit 1
+    volumes:
+      - redis:/data
   queue:
     image: rabbitmq:3-management-alpine
     container_name: system_queue

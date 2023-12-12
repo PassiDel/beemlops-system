@@ -28,7 +28,9 @@ export default defineNuxtConfig({
     influxUrl: 'http://localhost:8086',
     influxToken: '',
     influxOrg: '',
-    influxBucket: ''
+    influxBucket: '',
+    redisHost: '',
+    redisPassword: ''
   },
   eslint: {
     cache: true,

@@ -38,6 +38,12 @@
     "title": "Users",
     "card": {
       "title": "Users"
+    },
+    "user": {
+      "title": "User",
+      "card": {
+        "title": "User details"
+      }
     }
   }
 }

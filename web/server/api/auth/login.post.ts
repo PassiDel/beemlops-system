@@ -3,7 +3,7 @@ import { verify } from 'argon2';
 import { prisma } from '~/server/utils/prisma';
 
 export default defineEventHandler(async (event) => {
-  const { passwordMinLength } = useRuntimeConfig(event).public;
+  const { passwordMinLength } = useRuntimeConfig(event as any).public;
 
   const { email, password } = await useValidatedBody(
     event,
@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
   }
 
   console.warn(`Successful login attempted: ${email}`);
-  await setUserSession(event, {
+  await setUserSession(event as any, {
     user: {
       id: user.id,
       name: user.name

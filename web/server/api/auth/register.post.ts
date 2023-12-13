@@ -4,8 +4,8 @@ import { useRuntimeConfig } from '#imports';
 import { prisma } from '~/server/utils/prisma';
 
 export default defineEventHandler(async (event) => {
-  await clearUserSession(event);
-  const { passwordMinLength } = useRuntimeConfig(event).public;
+  await clearUserSession(event as any);
+  const { passwordMinLength } = useRuntimeConfig(event as any).public;
 
   const { email, password, name } = await useValidatedBody(
     event,
@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
   });
   console.warn(`Successful register: ${email}`);
 
-  await setUserSession(event, {
+  await setUserSession(event as any, {
     user: {
       id,
       name

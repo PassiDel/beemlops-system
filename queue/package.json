@@ -12,11 +12,12 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "rabbitmq-client": "^4.4.0",
-    "dotenv": "^16.3.1"
+    "@mono/db": "^1.0.0",
+    "dotenv": "^16.3.1",
+    "rabbitmq-client": "^4.4.0"
   },
   "scripts": {
-    "start": "tsx src/index.ts",
+    "start": "tsx src/consumer.ts",
     "build": "tsc"
   },
   "keywords": [],

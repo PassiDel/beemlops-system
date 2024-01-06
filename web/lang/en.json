@@ -39,5 +39,44 @@
     "card": {
       "title": "Users"
     }
+  },
+  "dashboard": {
+    "title": "Dashboard"
+  },
+  "imprint": {
+    "title": "Imprint"
+  },
+  "teams": {
+    "title": "Teams",
+    "team": {
+      "title": "Team",
+      "edit": {
+        "title": "Edit"
+      },
+      "locations": {
+        "title": "Locations",
+        "location": {
+          "title": "Location",
+          "edit": {
+            "title": "Edit"
+          },
+          "hive": {
+            "title": "Hive",
+            "inspections": {
+              "title": "Inspections",
+              "inspection": {
+                "title": "Inspection"
+              },
+              "create": {
+                "title": "Edit"
+              }
+            },
+            "edit": {
+              "title": "Edit"
+            }
+          }
+        }
+      }
+    }
   }
 }

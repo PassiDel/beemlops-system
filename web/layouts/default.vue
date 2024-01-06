@@ -7,14 +7,25 @@ watchEffect(() => {
   isSidebarVisible.value = breakpoints.smUp;
 });
 
-const menu = [
+const menu: {
+  icon: string;
+  title: string;
+  to: string;
+  show?: (l: boolean) => boolean;
+}[] = [
   { icon: 'house', title: 'Home', to: '/' },
   { icon: 'info', title: 'About', to: '/about' },
   { icon: 'group', title: 'Users', to: '/users' },
   { icon: 'save', title: 'Cache', to: '/cache' },
-  { icon: 'login', title: 'Login', to: '/login' },
-  { icon: 'app_registration', title: 'Register', to: '/register' }
+  { icon: 'login', title: 'Login', to: '/login', show: (l) => !l },
+  {
+    icon: 'app_registration',
+    title: 'Register',
+    to: '/register',
+    show: (l) => !l
+  }
 ];
+
 const { applyPreset, currentPresetName } = useColors();
 
 const switchValue = computed({
@@ -58,8 +69,10 @@ const { loggedIn, clear } = useUserSession();
     <template #left>
       <VaSidebar v-model="isSidebarVisible">
         <VaSidebarItem
-          v-for="{ icon, title, to } in menu"
-          :key="icon"
+          v-for="{ icon, title, to } in menu.filter((m) =>
+            m.show ? m.show(loggedIn) : true
+          )"
+          :key="to"
           :to="localePath(to)"
           :active="localePath(to) === route.path"
         >

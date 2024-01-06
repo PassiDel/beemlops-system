@@ -11,7 +11,10 @@ const title = computed(() =>
 );
 </script>
 <template>
-  <Html :lang="head?.htmlAttrs?.lang" :dir="head?.htmlAttrs?.dir">
+  <Html
+    :lang="head?.htmlAttrs?.lang?.split('-')[0]"
+    :dir="head?.htmlAttrs?.dir"
+  >
     <Head>
       <Title>{{ title }}</Title>
       <template v-for="link in head.link" :key="link.id">

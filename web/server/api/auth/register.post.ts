@@ -1,6 +1,6 @@
 import { useValidatedBody, z } from 'h3-zod';
 import { hash } from 'argon2';
-import { createSlug, useRuntimeConfig } from '#imports';
+import { useRuntimeConfig } from '#imports';
 import { prisma } from '~/server/utils/prisma';
 
 export default defineEventHandler(async (event) => {

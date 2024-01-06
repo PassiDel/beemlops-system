@@ -1,7 +1,7 @@
 import { useValidatedParams, z, zh } from 'h3-zod';
+import { subject } from '@casl/ability';
 import { prisma } from '~/server/utils/prisma';
 import { teamDto } from '~/server/dto/team';
-import { subject } from '@casl/ability';
 import { useAbility } from '~/server/casl';
 
 export default defineEventHandler(async (event) => {

@@ -1,8 +1,8 @@
 import { User, Team } from '@mono/db';
 import { AbilityBuilder, PureAbility } from '@casl/ability';
 import { PrismaQuery, Subjects } from '@casl/prisma';
-import { createPrismaAbility } from '~/server/casl/prisma';
 import { H3Event } from 'h3';
+import { createPrismaAbility } from '~/server/casl/prisma';
 
 declare module 'h3' {
   interface H3EventContext {

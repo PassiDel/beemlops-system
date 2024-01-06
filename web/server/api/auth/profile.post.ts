@@ -1,8 +1,8 @@
 import { useValidatedBody, z } from 'h3-zod';
-import { prisma, useRuntimeConfig } from '#imports';
-import { useAbility } from '~/server/casl';
 import { subject } from '@casl/ability';
 import { hash } from 'argon2';
+import { useRuntimeConfig } from '#imports';
+import { useAbility } from '~/server/casl';
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event as any);

@@ -17,6 +17,12 @@ const menu: {
   { icon: 'info', title: 'About', to: '/about' },
   { icon: 'group', title: 'Users', to: '/users' },
   { icon: 'save', title: 'Cache', to: '/cache' },
+  {
+    icon: 'account_circle',
+    title: 'Settings',
+    to: '/profile',
+    show: (l) => l
+  },
   { icon: 'login', title: 'Login', to: '/login', show: (l) => !l },
   {
     icon: 'app_registration',

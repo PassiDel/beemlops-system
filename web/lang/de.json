@@ -48,5 +48,13 @@
         "title": "Nutzende Details"
       }
     }
+  },
+  "profile": {
+    "settings": {
+      "title": "Einstellungen",
+      "card": {
+        "title": "Profileinstellungen"
+      }
+    }
   }
 }

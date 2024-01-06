@@ -9,14 +9,16 @@ export default defineEventHandler(async (event) => {
   const { id } = await useValidatedParams(
     event,
     z.object({
-      id: zh.intAsString
+      id: zh.intAsString.or(z.literal('me'))
     })
   );
+
+  const loggedInUser = (await getUserSession(event as any)).user;
 
   const user = await prisma.user.findUnique({
     where: {
       deletedAt: null,
-      id
+      id: typeof id === 'number' ? id : loggedInUser.id
     }
   });
   if (!user) {

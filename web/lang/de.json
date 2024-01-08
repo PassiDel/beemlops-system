@@ -39,5 +39,44 @@
     "card": {
       "title": "Nutzende"
     }
+  },
+  "dashboard": {
+    "title": "Dashboard"
+  },
+  "imprint": {
+    "title": "Impressum"
+  },
+  "teams": {
+    "title": "Teams",
+    "team": {
+      "title": "Team",
+      "edit": {
+        "title": "Bearbeiten"
+      },
+      "locations": {
+        "title": "Orte",
+        "location": {
+          "title": "Ort",
+          "edit": {
+            "title": "Bearbeiten"
+          },
+          "hive": {
+            "title": "Stock",
+            "inspections": {
+              "title": "Inspektionen",
+              "inspection": {
+                "title": "Inspektion"
+              },
+              "create": {
+                "title": "Bearbeiten"
+              }
+            },
+            "edit": {
+              "title": "Bearbeiten"
+            }
+          }
+        }
+      }
+    }
   }
 }

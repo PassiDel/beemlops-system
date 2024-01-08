@@ -5,8 +5,8 @@ definePageMeta({
 });
 defineI18nRoute({
   paths: {
-    en: '/teams/[teamid]/locations/[locationid]',
-    de: '/teams/[teamid]/orte/[locationid]'
+    en: '/teams/[teamid]/locations',
+    de: '/teams/[teamid]/orte'
   }
 });
 </script>

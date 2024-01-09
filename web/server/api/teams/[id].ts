@@ -1,7 +1,7 @@
 import { useValidatedParams, z, zh } from 'h3-zod';
 import { subject } from '@casl/ability';
 import { prisma } from '~/server/utils/prisma';
-import { userDto, userFullDto } from '~/server/dto/user';
+import { teamDto } from '~/server/dto/team';
 import { useAbility } from '~/server/casl';
 
 export default defineEventHandler(async (event) => {
@@ -9,25 +9,30 @@ export default defineEventHandler(async (event) => {
   const { id } = await useValidatedParams(
     event,
     z.object({
-      id: zh.intAsString.or(z.literal('me'))
+      id: zh.intAsString
     })
   );
 
-  const loggedInUser = (await getUserSession(event as any)).user;
-
-  const user = await prisma.user.findUnique({
+  const team = await prisma.team.findUnique({
     where: {
       deletedAt: null,
-      id: typeof id === 'number' ? id : loggedInUser.id
+      id
+    },
+    include: {
+      users: {
+        include: {
+          user: true
+        }
+      },
+      creator: true
     }
   });
-  if (!user) {
+  if (!team) {
     throw createError({ status: 404, statusText: 'Not found!' });
   }
-  if (useAbility(event).cannot('read', subject('User', user))) {
+  if (useAbility(event).cannot('read', subject('Team', team))) {
     throw createError({ status: 403, statusText: 'Not allowed!' });
   }
-  return useAbility(event).can('read:full', subject('User', user))
-    ? userFullDto(user)
-    : userDto(user);
+
+  return teamDto(team);
 });

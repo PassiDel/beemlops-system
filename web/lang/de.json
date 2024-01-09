@@ -11,7 +11,10 @@
     "email": "E-Mail",
     "password": "Passwort",
     "name": "Name",
-    "accept": "Akzeptieren"
+    "accept": "Akzeptieren",
+    "showPassword": "Passwort einblenden",
+    "hidePassword": "Passwort ausblenden",
+    "reset": "Zurücksetzen"
   },
   "layouts": {
     "title": "{title} {'|'} System"
@@ -38,6 +41,20 @@
     "title": "Nutzende",
     "card": {
       "title": "Nutzende"
+    },
+    "user": {
+      "title": "Nutzende",
+      "card": {
+        "title": "Nutzende Details"
+      }
+    }
+  },
+  "profile": {
+    "settings": {
+      "title": "Einstellungen",
+      "card": {
+        "title": "Profileinstellungen"
+      }
     }
   },
   "dashboard": {

@@ -4,8 +4,8 @@ import { useRuntimeConfig } from '#imports';
 import { prisma } from '~/server/utils/prisma';
 
 export default defineEventHandler(async (event) => {
-  await clearUserSession(event);
-  const { passwordMinLength } = useRuntimeConfig(event).public;
+  await clearUserSession(event as any);
+  const { passwordMinLength } = useRuntimeConfig(event as any).public;
 
   const { email, password, name } = await useValidatedBody(
     event,
@@ -33,16 +33,42 @@ export default defineEventHandler(async (event) => {
 
   const passwordHash = await hash(password);
 
-  const { id } = await prisma.user.create({
-    data: {
-      password: passwordHash,
-      name,
-      email
-    }
+  const { id } = await prisma.$transaction(async (tx) => {
+    const user = await tx.user.create({
+      data: {
+        password: passwordHash,
+        name,
+        email
+      },
+      select: { id: true }
+    });
+    await tx.team.create({
+      data: {
+        name: 'Default team',
+        slug: createSlug(`default ${name}`),
+        creator: {
+          connect: user
+        },
+        users: {
+          create: {
+            user: { connect: user }
+          }
+        }
+      },
+      select: { id: true }
+    });
+    return user;
   });
+  await pub.send(
+    {
+      exchange: 'my-events',
+      routingKey: 'user.register'
+    },
+    { id }
+  );
   console.warn(`Successful register: ${email}`);
 
-  await setUserSession(event, {
+  await setUserSession(event as any, {
     user: {
       id,
       name

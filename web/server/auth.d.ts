@@ -1,6 +1,9 @@
 declare module '#auth-utils' {
   interface UserSession {
-    id: number;
-    name: string;
+    user: {
+      id: number;
+      name: string;
+    };
+    loggedInAt: string | Date;
   }
 }

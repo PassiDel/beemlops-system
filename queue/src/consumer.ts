@@ -1,4 +1,5 @@
 import { rabbit } from './connection.js';
+import './user/register.js';
 
 const sub = rabbit.createConsumer(
   {

@@ -11,7 +11,10 @@
     "email": "Email",
     "password": "Password",
     "name": "Name",
-    "accept": "Accept"
+    "accept": "Accept",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "reset": "Reset"
   },
   "layouts": {
     "title": "{title} {'|'} System"
@@ -38,6 +41,20 @@
     "title": "Users",
     "card": {
       "title": "Users"
+    },
+    "user": {
+      "title": "User",
+      "card": {
+        "title": "User details"
+      }
+    }
+  },
+  "profile": {
+    "settings": {
+      "title": "Settings",
+      "card": {
+        "title": "Profile settings"
+      }
     }
   },
   "dashboard": {

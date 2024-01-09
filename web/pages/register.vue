@@ -85,25 +85,47 @@ async function submit() {
         <VaIcon name="mail_outline" color="secondary" />
       </template>
     </VaInput>
-    <VaInput
-      v-model="form.password"
-      type="password"
-      :label="$t('auth.password')"
-      :placeholder="$t('auth.password')"
-      :rules="[
-        (value) => (value && value.length > 0) || 'Password is required',
-        (value) =>
-          (value && value.length >= passwordMinLength) ||
-          `Password has to be ${passwordMinLength} chars long`
-      ]"
-      autocomplete="current-password"
-      :minlength="passwordMinLength"
-      required
-    >
-      <template #prependInner>
-        <VaIcon name="key" color="secondary" />
-      </template>
-    </VaInput>
+
+    <VaValue v-slot="isPasswordVisible" :default-value="false">
+      <VaInput
+        v-model="form.password"
+        :type="isPasswordVisible.value ? 'text' : 'password'"
+        :label="$t('auth.password')"
+        :placeholder="$t('auth.password')"
+        :rules="[
+          (value) => (value && value.length > 0) || 'Password is required',
+          (value) =>
+            (value && value.length >= passwordMinLength) ||
+            `Password has to be ${passwordMinLength} chars long`
+        ]"
+        autocomplete="current-password"
+        :minlength="passwordMinLength"
+        required
+      >
+        <template #prependInner>
+          <VaIcon name="key" color="secondary" />
+        </template>
+        <template #appendInner>
+          <VaButton
+            v-if="form.password"
+            preset="plain"
+            :title="
+              $t(
+                isPasswordVisible.value
+                  ? 'auth.hidePassword'
+                  : 'auth.showPassword'
+              )
+            "
+            @click="isPasswordVisible.value = !isPasswordVisible.value"
+          >
+            <VaIcon
+              :name="isPasswordVisible.value ? 'visibility_off' : 'visibility'"
+              color="primary"
+            />
+          </VaButton>
+        </template>
+      </VaInput>
+    </VaValue>
     <VaSwitch
       v-model="form.accept"
       size="small"

@@ -1,14 +1,17 @@
-import { defineVuesticConfig, createIconsConfig } from 'vuestic-ui';
+import { createIconsConfig, defineVuesticConfig } from 'vuestic-ui';
 
 export default defineVuesticConfig({
   icons: createIconsConfig({
     fonts: [
       {
-        name: 'mdi-{icon}',
+        name: '{icon}',
         resolve: ({ icon }) => ({
-          class: 'material-icons',
-          content: icon,
-          tag: 'span'
+          class: 'notranslate material-icons',
+          content: icon.split('-').reverse()[0],
+          tag: 'span',
+          attrs: {
+            translate: 'no'
+          }
         })
       }
     ]

@@ -12,13 +12,6 @@ definePageMeta({
       <VaCard stripe :stripe-color="pending ? 'warning' : 'success'">
         <VaCardTitle>{{ $t('users.card.title') }}</VaCardTitle>
         <VaCardContent>
-          <!--          <ul v-if="!pending">-->
-          <!--            <li v-for="user in users" :key="user.id">-->
-          <!--              <NuxtLink :to="localePath(`/users/${user.id}`)">{{-->
-          <!--                user.name-->
-          <!--              }}</NuxtLink>-->
-          <!--            </li>-->
-          <!--          </ul>-->
           <VaList v-if="!pending">
             <VaListItem
               v-for="user in users"

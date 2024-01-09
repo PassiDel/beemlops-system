@@ -138,25 +138,3 @@ model Sensor {
   unit         String
   DeviceSensor DeviceSensor[]
 }
-
-model Measurement {
-  id Int @id @default(autoincrement())
-
-  device   Device @relation(fields: [deviceId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  deviceId Int
-
-  temperature1 Float
-  temperature2 Float
-  temperature3 Float
-  temperature4 Float
-  temperature5 Float
-  temperature  Float
-  humidity     Float
-  pressure     Int
-  weightKg     Float
-  rssi         Int
-
-  createdAt DateTime  @default(now()) @db.Timestamptz(3)
-  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
-  deletedAt DateTime? @db.Timestamptz(3)
-}

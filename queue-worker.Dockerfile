@@ -26,6 +26,7 @@ FROM base
 
 ENV PORT=$PORT
 
+COPY --from=build /src/db /src/db
 COPY --from=build /src/queue/dist /src/
 COPY --from=build /src/queue/package.json /src/
 COPY --from=build /src/node_modules /src/node_modules

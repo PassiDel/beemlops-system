@@ -13,6 +13,7 @@ FROM base as build
 
 COPY --link package.json package-lock.json ./
 
+COPY --link db ./db
 COPY --link queue ./queue
 
 RUN npm run install-all --include=dev

@@ -116,7 +116,6 @@ model Device {
   updatedAt    DateTime       @updatedAt @db.Timestamptz(3)
   deletedAt    DateTime?      @db.Timestamptz(3)
   DeviceSensor DeviceSensor[]
-  Measurement  Measurement[]
 }
 
 model DeviceSensor {

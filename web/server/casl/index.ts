@@ -1,4 +1,4 @@
-import { User, Team } from '@mono/db';
+import { Team, User } from '@mono/db';
 import { AbilityBuilder, PureAbility } from '@casl/ability';
 import { PrismaQuery, Subjects } from '@casl/prisma';
 import { H3Event } from 'h3';
@@ -27,7 +27,7 @@ export function defineAbilityFor(user: { id: number } | null) {
   if (user) {
     // Authed user
 
-    allow('list', 'Team');
+    allow(['list', 'create'], 'Team');
     allow('read', 'User');
     allow(['update', 'read:full', 'delete'], 'User', { id: user.id });
 

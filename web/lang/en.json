@@ -103,9 +103,16 @@
             }
           }
         }
-      }
+      },
+      "slug": "Slug",
+      "name": "Team name",
+      "create_new": "Create a new team"
     }
   },
   "open": "Open",
-  "edit": "Edit"
+  "edit": "Edit",
+  "regenerate": "Regenerate",
+  "create": "Create",
+  "close": "Close",
+  "redirect_after_creation": "Redirect after creation"
 }

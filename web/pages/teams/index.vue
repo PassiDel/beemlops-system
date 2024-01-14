@@ -6,17 +6,20 @@ definePageMeta({
 const showModal = ref(false);
 const localePath = useLocalePath();
 
-const { data: teams, pending } = await useFetch('/api/teams');
+const { data: teams, pending, refresh } = await useFetch('/api/teams');
 </script>
 
 <template>
   <div>
     <div class="flex gap-8 mb-8">
       <h1 class="text-3xl">{{ $t('teams.title') }}</h1>
+      <VaButton color="primary" :disabled="pending" @click="refresh"
+        ><VaIcon name="refresh"
+      /></VaButton>
       <VaButton color="success" @click="showModal = !showModal"
         ><VaIcon name="add"
       /></VaButton>
-      <CreateTeam v-model:show-modal="showModal" />
+      <CreateTeam v-model:show-modal="showModal" @update-list="refresh" />
     </div>
     <div v-if="!pending && teams" class="grid grid-cols-12 gap-6">
       <VaCard
@@ -27,13 +30,23 @@ const { data: teams, pending } = await useFetch('/api/teams');
         :stripe-color="team.isCreator ? 'success' : 'primary'"
         :to="localePath(`/teams/${team.slug}`)"
       >
-        <VaCardTitle>{{ team.name }}</VaCardTitle>
+        <VaCardTitle class="overflow-hidden overflow-ellipsis w-full">{{
+          team.name
+        }}</VaCardTitle>
         <VaCardContent>
-          <h2 class="text-2xl">{{ team.name }}</h2>
-          <h3>
+          <h2
+            class="text-2xl w-full overflow-hidden overflow-ellipsis"
+            :title="team.name"
+          >
+            {{ team.name }}
+          </h2>
+          <h3
+            class="w-full overflow-hidden overflow-ellipsis"
+            :title="team.creator.name"
+          >
             {{ $t('teams.team.creator_name', { name: team.creator.name }) }}
           </h3>
-          <h3>
+          <h3 :title="new Date(team.createdAt).toISOString()">
             {{
               $t('teams.team.created_at', {
                 data: $d(new Date(team.createdAt))

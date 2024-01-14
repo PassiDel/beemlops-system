@@ -67,6 +67,9 @@
     "title": "Teams",
     "team": {
       "title": "Team",
+      "creator_name": "Erstellt von: {name}",
+      "created_at": "Erstellt am: {data}",
+      "members": "Mitglieder:",
       "edit": {
         "title": "Bearbeiten"
       },
@@ -95,5 +98,7 @@
         }
       }
     }
-  }
+  },
+  "open": "Öffnen",
+  "edit": "Bearbeiten"
 }

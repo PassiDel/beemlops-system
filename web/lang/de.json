@@ -16,6 +16,13 @@
     "hidePassword": "Passwort ausblenden",
     "reset": "Zurücksetzen"
   },
+  "validation": {
+    "max_length": "{name} darf maximal {max} Zeichen lang sein",
+    "min_length": "{name} muss mindestens {min} Zeichen lang sein",
+    "required": "{name} ist erforderlich",
+    "invalid": "Ungültiges Format",
+    "taken": "Bereits vergeben"
+  },
   "layouts": {
     "title": "{title} {'|'} System"
   },

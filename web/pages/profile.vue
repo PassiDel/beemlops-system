@@ -10,6 +10,7 @@ definePageMeta({
 const { passwordMinLength } = useRuntimeConfig().public;
 
 const { isValid, resetValidation } = useForm('formRef');
+const validation = useValidation();
 
 const { pending, data: _data } = await useFetch(`/api/users/me`);
 const data = _data as unknown as Ref<UserFullDto>;
@@ -58,7 +59,8 @@ async function submit() {
               :label="$t('auth.name')"
               autocomplete="name"
               :rules="[
-                (value) => (value && value.length > 0) || 'Name is required'
+                validation.required($t('auth.name')),
+                validation.max($t('auth.name'), 64)
               ]"
               :placeholder="$t('auth.name')"
               required
@@ -76,9 +78,7 @@ async function submit() {
               autocomplete="email"
               class="w-full"
               :label="$t('auth.email')"
-              :rules="[
-                (value) => (value && value.length > 0) || 'Email is required'
-              ]"
+              :rules="[validation.required($t('auth.email'))]"
               :placeholder="$t('auth.email')"
               required
               :clearable="form.email !== data.email"
@@ -98,10 +98,8 @@ async function submit() {
                 :label="$t('auth.password')"
                 :placeholder="$t('auth.password')"
                 :rules="[
-                  (value) =>
-                    value.length === 0 ||
-                    value.length >= passwordMinLength ||
-                    `Password has to be ${passwordMinLength} chars long`
+                  validation.required($t('auth.password')),
+                  validation.min($t('auth.password'), passwordMinLength)
                 ]"
                 autocomplete="new-password"
                 :minlength="passwordMinLength"

@@ -16,6 +16,13 @@
     "hidePassword": "Hide password",
     "reset": "Reset"
   },
+  "validation": {
+    "max_length": "{name} has to be max {max} chars long",
+    "min_length": "{name} has to at least {min} chars long",
+    "required": "{name} is required",
+    "invalid": "Invalid format",
+    "taken": "Already taken"
+  },
   "layouts": {
     "title": "{title} {'|'} System"
   },

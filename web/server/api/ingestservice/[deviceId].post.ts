@@ -1,7 +1,7 @@
-import { useValidatedBody, useValidatedParams, z, zh } from "h3-zod";
-import { prisma } from "~/server/utils/prisma";
-import { useRuntimeConfig } from "#imports";
-import { Point } from "@influxdata/influxdb-client";
+import { useValidatedBody, useValidatedParams, z, zh } from 'h3-zod';
+import { Point } from '@influxdata/influxdb-client';
+import { prisma } from '~/server/utils/prisma';
+import { useRuntimeConfig } from '#imports';
 
 async function validateDevice(deviceId) {
   const device = await prisma.device.findUniqueOrThrow({
@@ -21,12 +21,15 @@ async function validateDevice(deviceId) {
 }
 
 async function validateKey(event, device) {
-  const requestKey = await useValidatedBody(event, z.object({ key: z.string() }));
+  const requestKey = await useValidatedBody(
+    event,
+    z.object({ key: z.string() })
+  );
 
   if (!requestKey || device.key !== requestKey.key) {
     throw createError({
       status: HTTP_UNAUTHORIZED,
-      statusText: "Unauthorized: Key is wrong!"
+      statusText: 'Unauthorized: Key is wrong!'
     });
   }
 }
@@ -34,30 +37,31 @@ async function validateKey(event, device) {
 async function resolveSensorKeys(deviceId) {
   const sensors = await prisma.deviceSensor.findMany({
     where: {
-      deviceId: deviceId
+      deviceId
     }
   });
 
-  return Promise.all(sensors.map(async (sensor) => {
-    if (sensor.key) {
-      return sensor.key;
-    } else {
-      const sensorEntity = await prisma.sensor.findUniqueOrThrow({
-        where: {
-          id: sensor.sensorId
-        }
-      });
-      return sensorEntity.name;
-    }
-  }));
+  return Promise.all(
+    sensors.map(async (sensor) => {
+      if (sensor.key) {
+        return sensor.key;
+      } else {
+        const sensorEntity = await prisma.sensor.findUniqueOrThrow({
+          where: {
+            id: sensor.sensorId
+          }
+        });
+        return sensorEntity.name;
+      }
+    })
+  );
 }
 
 async function writeToInflux(event: any, jsonData) {
   const { influxBucket, influxOrg } = useRuntimeConfig(event as any);
   const writeClient = influxDB.getWriteApi(influxOrg, influxBucket);
 
-  const point = new Point("measurement")
-    .tag("tag", "test")
+  const point = new Point('measurement').tag('tag', 'test');
 
   for (const [key, value] of Object.entries(jsonData)) {
     point.floatField(key, value);
@@ -87,10 +91,9 @@ export default defineEventHandler(async (event) => {
     );
     const jsonData = await useValidatedBody(event, bodySchema);
 
-    await writeToInflux(event, jsonData)
+    await writeToInflux(event, jsonData);
 
-    return jsonData
-
+    return jsonData;
   } catch (e) {
     console.log({ e });
     throw createError({
@@ -99,4 +102,3 @@ export default defineEventHandler(async (event) => {
     });
   }
 });
-

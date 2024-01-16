@@ -106,7 +106,10 @@
       },
       "slug": "Slug",
       "name": "Team name",
-      "create_new": "Create a new team"
+      "create_new": "Create a new team",
+      "no_location": "No Location found, maybe create one!",
+      "no_hive_title": "No Hive created yet",
+      "no_hive_content": "Maybe create one?"
     }
   },
   "open": "Open",

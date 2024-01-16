@@ -34,8 +34,7 @@ export default defineEventHandler(async (event) => {
     }
   });
 
-  return teams.map((t) => ({
-    ...teamDto(t),
-    isCreator: useAbility(event).can('update', subject('Team', t))
-  }));
+  return teams.map((t) =>
+    teamDto(t, useAbility(event).can('update', subject('Team', t)))
+  );
 });

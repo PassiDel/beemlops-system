@@ -114,5 +114,17 @@
   "regenerate": "Regenerate",
   "create": "Create",
   "close": "Close",
-  "redirect_after_creation": "Redirect after creation"
+  "redirect_after_creation": "Redirect after creation",
+  "errors": {
+    "go_back": "Go back",
+    "go_home": "Go to home",
+    "404": {
+      "title": "404 - Not found!",
+      "content": "The page you are trying to find, doesn't exist!"
+    },
+    "403": {
+      "title": "403 - Not allowed!",
+      "content": "You are not allowed to access this page!"
+    }
+  }
 }

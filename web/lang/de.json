@@ -114,5 +114,17 @@
   "regenerate": "Regenerieren",
   "create": "Erstellen",
   "close": "Schließen",
-  "redirect_after_creation": "Nach der Erstellung dahin navigieren"
+  "redirect_after_creation": "Nach der Erstellung dahin navigieren",
+  "errors": {
+    "go_back": "Zurück",
+    "go_home": "Zurück zur Startseite",
+    "404": {
+      "title": "404 - Nicht gefunden!",
+      "content": "Die Seite, die du suchst, existiert nicht!"
+    },
+    "403": {
+      "title": "403 - Nicht erlaubt!",
+      "content": "Du hast keine Berechtigung um diese Seite zu sehen!"
+    }
+  }
 }

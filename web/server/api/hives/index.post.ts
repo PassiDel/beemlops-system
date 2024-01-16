@@ -1,7 +1,7 @@
 import { useValidatedBody, z } from 'h3-zod';
+import { subject } from '@casl/ability';
 import { prisma } from '~/server/utils/prisma';
 import { useAbility } from '~/server/casl';
-import { subject } from '@casl/ability';
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event as any);

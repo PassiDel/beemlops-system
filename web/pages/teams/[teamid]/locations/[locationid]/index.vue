@@ -41,7 +41,7 @@ const showModal = ref(false);
           v-if="location.isCreator"
           :disabled="pending"
           color="warning"
-          :to="`/teams/${teamid}/edit`"
+          :to="`/teams/${teamid}/locations/${locationid}/edit`"
           ><VaIcon name="edit"
         /></VaButton>
         <VaButton

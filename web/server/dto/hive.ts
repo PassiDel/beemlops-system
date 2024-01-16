@@ -8,6 +8,8 @@ export function locationDto(location: FullHiveLocation) {
   return { id, name, slug, lat, lon, createdAt, hives: hives.map(hiveDto) };
 }
 
+export type LocationDto = ReturnType<typeof locationDto>;
+
 export function hiveDto(hive: Hive) {
   const { id, name, slug, desc, rawWeight, createdAt } = hive;
 

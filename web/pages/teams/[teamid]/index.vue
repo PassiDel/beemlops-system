@@ -108,9 +108,20 @@ const team = _data as Ref<TeamLocationHiveDto>;
             </VaCardContent>
 
             <VaCardActions align="between">
-              <VaButton v-if="team.isCreator" color="success">{{
-                $t('create')
-              }}</VaButton>
+              <VaValue v-slot="showModal">
+                <VaButton
+                  v-if="team.isCreator"
+                  color="success"
+                  @click="showModal.value = !showModal.value"
+                  >{{ $t('create') }}</VaButton
+                ><CreateHive
+                  v-model:show-modal="showModal.value"
+                  :team-slug="team.slug"
+                  :location-slug="location.slug"
+                  :location-name="location.name"
+                  @update-list="refresh"
+                />
+              </VaValue>
             </VaCardActions>
           </VaCard>
         </div>

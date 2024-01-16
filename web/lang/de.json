@@ -100,7 +100,11 @@
             },
             "edit": {
               "title": "Bearbeiten"
-            }
+            },
+            "slug": "Slug",
+            "name": "Stockname",
+            "create_new": "Erstelle einen neuen Stock",
+            "create_for": "Für Standort: {name}"
           }
         }
       },
@@ -109,7 +113,7 @@
       "create_new": "Erstelle ein neues Team",
       "no_location": "Keinen Ort gefunden, erstelle vielleicht einen!",
       "no_hive_title": "Kein Stock",
-      "no_hive_content": "Legen vielleicht einen an?"
+      "no_hive_content": "Lege vielleicht einen an?"
     }
   },
   "open": "Öffnen",

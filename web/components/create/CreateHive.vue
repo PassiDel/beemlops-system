@@ -5,6 +5,9 @@ import useValidation from '@/composables/useValidation';
 
 const props = defineProps<{
   showModal: boolean;
+  teamSlug: string;
+  locationSlug: string;
+  locationName: string;
 }>();
 
 const emit = defineEmits<{
@@ -21,12 +24,14 @@ const { isValid, isLoading, resetValidation } = useForm('formRef');
 const form = reactive({
   name: '',
   slug: '',
+  desc: '',
+  location: props.locationSlug,
   redirect: false
 });
 
 async function createTeam() {
   try {
-    const { slug } = await $fetch('/api/teams', {
+    const { slug } = await $fetch('/api/hives', {
       method: 'POST',
       body: form
     });
@@ -38,7 +43,11 @@ async function createTeam() {
       emit('update-list');
       return;
     }
-    await router.push(localePath(`/teams/${slug}`));
+    await router.push(
+      localePath(
+        `/teams/${props.teamSlug}/locations/${props.locationSlug}/${slug}`
+      )
+    );
   } catch (e) {
     const code = (e as { statusCode: number })?.statusCode || 400;
 
@@ -52,7 +61,7 @@ async function createTeam() {
 const slugError = ref(null as string | null);
 async function checkSlug() {
   try {
-    await $fetch('/api/teams/check-slug', {
+    await $fetch('/api/hives/check-slug', {
       method: 'POST',
       body: {
         slug: form.slug
@@ -87,41 +96,65 @@ async function checkSlug() {
         >{{ $t('create') }}</VaButton
       >
     </template>
-    <h1 class="text-2xl mb-4">{{ $t('teams.team.create_new') }}</h1>
+    <h1 class="text-2xl mb-4">
+      {{ $t('teams.team.locations.location.hive.create_new') }}
+    </h1>
+    <p class="mb-4 w-full overflow-hidden overflow-ellipsis">
+      {{
+        $t('teams.team.locations.location.hive.create_for', {
+          name: props.locationName
+        })
+      }}
+    </p>
     <VaForm ref="formRef" tag="form" class="flex flex-col">
       <VaInput
         v-model="form.name"
         type="text"
-        :label="$t('teams.team.name')"
-        :placeholder="$t('teams.team.name')"
+        :label="$t('teams.team.locations.location.hive.name')"
+        :placeholder="$t('teams.team.locations.location.hive.name')"
         counter
         :max-length="64"
         required-mark
         :rules="[
-          validation.required($t('teams.team.name')),
-          validation.max($t('teams.team.name'), 64)
+          validation.required($t('teams.team.locations.location.hive.name')),
+          validation.max($t('teams.team.locations.location.hive.name'), 64)
         ]"
         required
         @change="form.slug = createSlug(form.name)"
       >
         <template #prependInner>
-          <VaIcon name="group" color="secondary" />
+          <VaIcon name="badge" color="secondary" />
         </template>
       </VaInput>
+      <VaTextarea
+        v-model="form.desc"
+        :label="$t('teams.team.locations.location.hive.name')"
+        :placeholder="$t('teams.team.locations.location.hive.name')"
+        autosize
+        :max-rows="10"
+        required-mark
+        counter
+        :max-length="4069"
+        :rules="[
+          validation.required($t('teams.team.locations.location.hive.name')),
+          validation.max($t('teams.team.locations.location.hive.name'), 4069)
+        ]"
+        required
+      />
       <VaInput
         v-model="form.slug"
         type="text"
-        :label="$t('teams.team.slug')"
-        :placeholder="$t('teams.team.slug')"
+        :label="$t('teams.team.locations.location.hive.slug')"
+        :placeholder="$t('teams.team.locations.location.hive.slug')"
         counter
         :max-length="64"
         required-mark
         :error-messages="slugError ? $t(slugError) : []"
         :error="!!slugError"
         :rules="[
-          validation.required($t('teams.team.slug')),
-          validation.max($t('teams.team.slug'), 64),
-          validation.min($t('teams.team.slug'), 7)
+          validation.required($t('teams.team.locations.location.hive.slug')),
+          validation.max($t('teams.team.locations.location.hive.slug'), 64),
+          validation.min($t('teams.team.locations.location.hive.slug'), 7)
         ]"
         required
         @change="checkSlug"

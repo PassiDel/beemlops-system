@@ -100,7 +100,11 @@
             },
             "edit": {
               "title": "Edit"
-            }
+            },
+            "slug": "Slug",
+            "name": "Hive name",
+            "create_new": "Create a new hive",
+            "create_for": "For location: {name}"
           }
         }
       },

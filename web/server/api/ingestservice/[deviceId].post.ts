@@ -1,8 +1,8 @@
 import { useValidatedBody, useValidatedParams, z, zh } from 'h3-zod';
 import { Point } from '@influxdata/influxdb-client';
+import type { H3Event } from 'h3';
 import { prisma } from '~/server/utils/prisma';
 import { useRuntimeConfig } from '#imports';
-import type { H3Event } from 'h3';
 
 async function validateDevice(deviceId: number) {
   const device = await prisma.device.findUnique({

@@ -16,6 +16,13 @@
     "hidePassword": "Hide password",
     "reset": "Reset"
   },
+  "validation": {
+    "max_length": "{name} has to be max {max} chars long",
+    "min_length": "{name} has to at least {min} chars long",
+    "required": "{name} is required",
+    "invalid": "Invalid format",
+    "taken": "Already taken"
+  },
   "layouts": {
     "title": "{title} {'|'} System"
   },
@@ -67,6 +74,9 @@
     "title": "Teams",
     "team": {
       "title": "Team",
+      "creator_name": "Created by: {name}",
+      "created_at": "Created at: {data}",
+      "members": "Members:",
       "edit": {
         "title": "Edit"
       },
@@ -90,10 +100,38 @@
             },
             "edit": {
               "title": "Edit"
-            }
+            },
+            "slug": "Slug",
+            "name": "Hive name",
+            "create_new": "Create a new hive",
+            "create_for": "For location: {name}"
           }
         }
-      }
+      },
+      "slug": "Slug",
+      "name": "Team name",
+      "create_new": "Create a new team",
+      "no_location": "No Location found, maybe create one!",
+      "no_hive_title": "No Hive created yet",
+      "no_hive_content": "Maybe create one?"
+    }
+  },
+  "open": "Open",
+  "edit": "Edit",
+  "regenerate": "Regenerate",
+  "create": "Create",
+  "close": "Close",
+  "redirect_after_creation": "Redirect after creation",
+  "errors": {
+    "go_back": "Go back",
+    "go_home": "Go to home",
+    "404": {
+      "title": "404 - Not found!",
+      "content": "The page you are trying to find, doesn't exist!"
+    },
+    "403": {
+      "title": "403 - Not allowed!",
+      "content": "You are not allowed to access this page!"
     }
   }
 }

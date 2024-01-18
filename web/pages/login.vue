@@ -17,6 +17,7 @@ const { fetch } = useUserSession();
 const router = useRouter();
 const localePath = useLocalePath();
 const { isValid, resetValidation } = useForm('formRef');
+const validation = useValidation();
 
 const { passwordMinLength } = useRuntimeConfig().public;
 const form = reactive({
@@ -57,7 +58,7 @@ async function submit() {
       type="email"
       :label="$t('auth.email')"
       autocomplete="email"
-      :rules="[(value) => (value && value.length > 0) || 'Email is required']"
+      :rules="[validation.required($t('auth.email'))]"
       :placeholder="$t('auth.email')"
       required
     >
@@ -72,10 +73,8 @@ async function submit() {
         :label="$t('auth.password')"
         :placeholder="$t('auth.password')"
         :rules="[
-          (value) => (value && value.length > 0) || 'Password is required',
-          (value) =>
-            (value && value.length >= passwordMinLength) ||
-            `Password has to be ${passwordMinLength} chars long`
+          validation.required($t('auth.password')),
+          validation.min($t('auth.password'), passwordMinLength)
         ]"
         autocomplete="current-password"
         :minlength="passwordMinLength"

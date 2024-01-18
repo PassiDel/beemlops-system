@@ -1,22 +1,22 @@
-import { useValidatedParams, z, zh } from 'h3-zod';
+import { useValidatedParams, z } from 'h3-zod';
 import { subject } from '@casl/ability';
 import { prisma } from '~/server/utils/prisma';
-import { teamDto } from '~/server/dto/team';
+import { teamLocationHiveDto } from '~/server/dto/team';
 import { useAbility } from '~/server/casl';
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event as any);
-  const { id } = await useValidatedParams(
+  const { teamid } = await useValidatedParams(
     event,
     z.object({
-      id: zh.intAsString
+      teamid: z.string().max(64)
     })
   );
 
   const team = await prisma.team.findUnique({
     where: {
       deletedAt: null,
-      id
+      slug: teamid
     },
     include: {
       users: {
@@ -24,7 +24,12 @@ export default defineEventHandler(async (event) => {
           user: true
         }
       },
-      creator: true
+      creator: true,
+      locations: {
+        include: {
+          hives: true
+        }
+      }
     }
   });
   if (!team) {
@@ -34,5 +39,8 @@ export default defineEventHandler(async (event) => {
     throw createError({ status: 403, statusText: 'Not allowed!' });
   }
 
-  return teamDto(team);
+  return teamLocationHiveDto(
+    team,
+    useAbility(event).can('update', subject('Team', team))
+  );
 });

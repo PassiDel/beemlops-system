@@ -16,6 +16,13 @@
     "hidePassword": "Passwort ausblenden",
     "reset": "Zurücksetzen"
   },
+  "validation": {
+    "max_length": "{name} darf maximal {max} Zeichen lang sein",
+    "min_length": "{name} muss mindestens {min} Zeichen lang sein",
+    "required": "{name} ist erforderlich",
+    "invalid": "Ungültiges Format",
+    "taken": "Bereits vergeben"
+  },
   "layouts": {
     "title": "{title} {'|'} System"
   },
@@ -67,6 +74,9 @@
     "title": "Teams",
     "team": {
       "title": "Team",
+      "creator_name": "Erstellt von: {name}",
+      "created_at": "Erstellt am: {data}",
+      "members": "Mitglieder:",
       "edit": {
         "title": "Bearbeiten"
       },
@@ -90,10 +100,38 @@
             },
             "edit": {
               "title": "Bearbeiten"
-            }
+            },
+            "slug": "Slug",
+            "name": "Stockname",
+            "create_new": "Erstelle einen neuen Stock",
+            "create_for": "Für Standort: {name}"
           }
         }
-      }
+      },
+      "slug": "Slug",
+      "name": "Teamname",
+      "create_new": "Erstelle ein neues Team",
+      "no_location": "Keinen Ort gefunden, erstelle vielleicht einen!",
+      "no_hive_title": "Kein Stock",
+      "no_hive_content": "Lege vielleicht einen an?"
+    }
+  },
+  "open": "Öffnen",
+  "edit": "Bearbeiten",
+  "regenerate": "Regenerieren",
+  "create": "Erstellen",
+  "close": "Schließen",
+  "redirect_after_creation": "Nach der Erstellung dahin navigieren",
+  "errors": {
+    "go_back": "Zurück",
+    "go_home": "Zurück zur Startseite",
+    "404": {
+      "title": "404 - Nicht gefunden!",
+      "content": "Die Seite, die du suchst, existiert nicht!"
+    },
+    "403": {
+      "title": "403 - Nicht erlaubt!",
+      "content": "Du hast keine Berechtigung um diese Seite zu sehen!"
     }
   }
 }

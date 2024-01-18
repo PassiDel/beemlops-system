@@ -29,6 +29,7 @@
     "argon2": "^0.31.2",
     "autoprefixer": "^10.4.16",
     "eslint-config-prettier": "^9.0.0",
+    "gravatar-url": "^4.0.1",
     "h3-zod": "^0.5.2",
     "material-design-icons-iconfont": "^6.7.0",
     "nuxt": "^3.8.1",

@@ -62,6 +62,8 @@ build-image-main:
     - docker push -a "$CI_REGISTRY_IMAGE/web"
     - docker build --pull -f queue-worker.Dockerfile -t "$CI_REGISTRY_IMAGE/worker/demo:$CI_COMMIT_SHORT_SHA" -t "$CI_REGISTRY_IMAGE/worker/demo:latest" .
     - docker push -a "$CI_REGISTRY_IMAGE/worker/demo"
+    - docker build --pull -f migrator.Dockerfile -t "$CI_REGISTRY_IMAGE/migrator:$CI_COMMIT_SHORT_SHA" -t "$CI_REGISTRY_IMAGE/migrator:latest" .
+    - docker push -a "$CI_REGISTRY_IMAGE/migrator"
 
 build-image:
   stage: build
@@ -75,3 +77,5 @@ build-image:
     - docker push -a "$CI_REGISTRY_IMAGE/web"
     - docker build --pull -f queue-worker.Dockerfile -t "$CI_REGISTRY_IMAGE/worker/demo:$CI_COMMIT_SHORT_SHA" .
     - docker push -a "$CI_REGISTRY_IMAGE/worker/demo"
+    - docker build --pull -f migrator.Dockerfile -t "$CI_REGISTRY_IMAGE/migrator:$CI_COMMIT_SHORT_SHA" .
+    - docker push -a "$CI_REGISTRY_IMAGE/migrator"

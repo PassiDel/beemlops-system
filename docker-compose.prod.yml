@@ -2,6 +2,18 @@ networks:
   web:
 
 services:
+  migrator:
+    image: 192.168.164.15:5005/beemlops/system/migrator:${WEB_VERSION}
+    build:
+      dockerfile: migrator.Dockerfile
+      context: .
+    networks:
+      - internal
+    restart: 'no'
+    profiles:
+      - migrate
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASS}@pgdb:5432/${POSTGRES_DB}?schema=public
   app:
     image: 192.168.164.15:5005/beemlops/system/web:${WEB_VERSION}
     build:

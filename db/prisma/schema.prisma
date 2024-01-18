@@ -119,15 +119,15 @@ model Device {
 }
 
 model DeviceSensor {
+  id Int @id @default(autoincrement())
+
   device   Device @relation(fields: [deviceId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   deviceId Int
 
   sensor   Sensor @relation(fields: [sensorId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   sensorId Int
 
-  key String?
-
-  @@id([deviceId, sensorId])
+  key String
 }
 
 model Sensor {

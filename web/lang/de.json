@@ -21,7 +21,8 @@
     "min_length": "{name} muss mindestens {min} Zeichen lang sein",
     "required": "{name} ist erforderlich",
     "invalid": "Ungültiges Format",
-    "taken": "Bereits vergeben"
+    "taken": "Bereits vergeben",
+    "date_range_past": "Zeitraum darf nicht in der Zukunft liegen"
   },
   "layouts": {
     "title": "{title} {'|'} System"

@@ -21,7 +21,8 @@
     "min_length": "{name} has to at least {min} chars long",
     "required": "{name} is required",
     "invalid": "Invalid format",
-    "taken": "Already taken"
+    "taken": "Already taken",
+    "date_range_past": "Date range cannot be in the future"
   },
   "layouts": {
     "title": "{title} {'|'} System"

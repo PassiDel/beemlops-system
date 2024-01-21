@@ -158,5 +158,19 @@
     "humidity": "Humidity",
     "weight": "Weight",
     "rssi": "RSSI"
+  },
+  "menu": {
+    "home": "Home",
+    "login": "Login",
+    "register": "Register",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "teams": "Teams",
+    "team": "Team",
+    "locations": "Locations",
+    "hives": "Hives",
+    "hive": "Hive",
+    "inspections": "Inspections",
+    "new_inspection": "New Inspection"
   }
 }

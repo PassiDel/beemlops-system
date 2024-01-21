@@ -158,5 +158,19 @@
     "humidity": "Luftfeuchte",
     "weight": "Gewicht",
     "rssi": "RSSI"
+  },
+  "menu": {
+    "home": "Startseite",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "dashboard": "Dashboard",
+    "settings": "Einstellungen",
+    "teams": "Teams",
+    "team": "Team",
+    "locations": "Orte",
+    "hives": "Stöcke",
+    "hive": "Stock",
+    "inspections": "Inspektionen",
+    "new_inspection": "Neue Inspektion"
   }
 }

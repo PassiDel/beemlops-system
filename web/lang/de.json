@@ -39,24 +39,6 @@
   },
   "refresh": "Neu laden",
   "dark_mode": "Dunkler Modus",
-  "cache": {
-    "title": "Cache",
-    "card": {
-      "title": "Cache Antwort"
-    }
-  },
-  "users": {
-    "title": "Nutzende",
-    "card": {
-      "title": "Nutzende"
-    },
-    "user": {
-      "title": "Nutzende",
-      "card": {
-        "title": "Nutzende Details"
-      }
-    }
-  },
   "profile": {
     "settings": {
       "title": "Einstellungen",

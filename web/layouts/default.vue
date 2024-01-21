@@ -109,8 +109,6 @@ const menu = computed(() => {
     }
   ];
 
-  console.log(route.params);
-
   return routes.filter((r) => r.show === true || r.show === undefined);
 });
 </script>

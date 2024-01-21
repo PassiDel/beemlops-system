@@ -39,24 +39,6 @@
   },
   "refresh": "Refresh",
   "dark_mode": "Dark Mode",
-  "cache": {
-    "title": "Cache",
-    "card": {
-      "title": "Cached Response"
-    }
-  },
-  "users": {
-    "title": "Users",
-    "card": {
-      "title": "Users"
-    },
-    "user": {
-      "title": "User",
-      "card": {
-        "title": "User details"
-      }
-    }
-  },
   "profile": {
     "settings": {
       "title": "Settings",

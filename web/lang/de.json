@@ -134,5 +134,23 @@
       "title": "403 - Nicht erlaubt!",
       "content": "Du hast keine Berechtigung um diese Seite zu sehen!"
     }
+  },
+  "time_window": {
+    "pick": "Wähle einen Zeitraum",
+    "today": "Heute",
+    "24h": "Letzte 24h",
+    "7d": "Letzte 7d",
+    "30d": "Letzte 30d",
+    "this_week": "Diese Woche",
+    "this_month": "Dieser Monat",
+    "last_week": "Letzte Woche",
+    "last_month": "Letzter Monat"
+  },
+  "units": {
+    "temp": "Temperature",
+    "pressure": "Luftdruck",
+    "humidity": "Luftfeuchte",
+    "weight": "Gewicht",
+    "rssi": "RSSI"
   }
 }

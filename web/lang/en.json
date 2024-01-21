@@ -134,5 +134,23 @@
       "title": "403 - Not allowed!",
       "content": "You are not allowed to access this page!"
     }
+  },
+  "time_window": {
+    "pick": "Pick date range",
+    "today": "Today",
+    "24h": "Last 24h",
+    "7d": "Last 7d",
+    "30d": "Last 30d",
+    "this_week": "This Week",
+    "this_month": "This Month",
+    "last_week": "Last Week",
+    "last_month": "Last Month"
+  },
+  "units": {
+    "temp": "Temperature",
+    "pressure": "Pressure",
+    "humidity": "Humidity",
+    "weight": "Weight",
+    "rssi": "RSSI"
   }
 }

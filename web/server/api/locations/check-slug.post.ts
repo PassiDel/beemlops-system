@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     })
   );
 
-  const hive = await prisma.hive.findUnique({
+  const team = await prisma.hiveLocation.findUnique({
     where: {
       slug
     },
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
       id: true
     }
   });
-  if (hive) {
+  if (team) {
     throw createError({ status: 409, statusText: 'Slug already in use!' });
   }
   return { available: true };

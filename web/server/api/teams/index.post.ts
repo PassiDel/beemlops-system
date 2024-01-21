@@ -1,6 +1,7 @@
 import { useValidatedBody, z } from 'h3-zod';
 import { prisma } from '~/server/utils/prisma';
 import { useAbility } from '~/server/casl';
+import { slugString } from '~/server/utils/zod';
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event as any);
@@ -10,11 +11,7 @@ export default defineEventHandler(async (event) => {
   const { slug, name } = await useValidatedBody(
     event,
     z.object({
-      slug: z
-        .string()
-        .min(7)
-        .max(64)
-        .regex(/^[a-z0-9-]{7,64}$/),
+      slug: slugString,
       name: z.string().max(64).trim()
     })
   );

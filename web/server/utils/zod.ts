@@ -14,3 +14,9 @@ export const ufoDate = z
       parse.error.errors.forEach((e) => ctx.addIssue(e));
     }
   });
+
+export const slugString = z
+  .string()
+  .min(7)
+  .max(64)
+  .regex(/^[a-z0-9-]{7,64}$/);

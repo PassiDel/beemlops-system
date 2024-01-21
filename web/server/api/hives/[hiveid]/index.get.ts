@@ -3,13 +3,14 @@ import { subject } from '@casl/ability';
 import { prisma } from '~/server/utils/prisma';
 import { useAbility } from '~/server/casl';
 import { hiveDto } from '~/server/dto/hive';
+import { slugString } from '~/server/utils/zod';
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event as any);
   const { hiveid } = await useValidatedParams(
     event,
     z.object({
-      hiveid: z.string().max(64)
+      hiveid: slugString
     })
   );
 

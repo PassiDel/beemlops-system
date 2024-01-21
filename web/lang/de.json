@@ -106,13 +106,19 @@
             "name": "Stockname",
             "create_new": "Erstelle einen neuen Stock",
             "create_for": "Für Standort: {name}"
-          }
+          },
+          "slug": "Slug",
+          "name": "Name",
+          "create_new": "Erstelle einen neuen Ort",
+          "create_for": "Für Team: {name}"
         }
       },
       "slug": "Slug",
       "name": "Teamname",
       "create_new": "Erstelle ein neues Team",
       "no_location": "Keinen Ort gefunden, erstelle vielleicht einen!",
+      "no_location_title": "Keinen Ort gefunden",
+      "no_location_content": "Lege vielleicht einen an?",
       "no_hive_title": "Kein Stock",
       "no_hive_content": "Lege vielleicht einen an?"
     }

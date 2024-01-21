@@ -2,14 +2,15 @@ import { useValidatedParams, z } from 'h3-zod';
 import { subject } from '@casl/ability';
 import { prisma } from '~/server/utils/prisma';
 import { useAbility } from '~/server/casl';
-import { locationDto } from '~/server/dto/hive';
+import { locationHiveDto } from '~/server/dto/hive';
+import { slugString } from '~/server/utils/zod';
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event as any);
   const { locationid } = await useValidatedParams(
     event,
     z.object({
-      locationid: z.string().max(64)
+      locationid: slugString
     })
   );
 
@@ -40,7 +41,7 @@ export default defineEventHandler(async (event) => {
   }
 
   return {
-    ...locationDto(location),
+    ...locationHiveDto(location),
     isCreator: useAbility(event).can('update', subject('Team', location.team))
   };
 });

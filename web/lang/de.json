@@ -76,6 +76,9 @@
               "title": "Inspektionen",
               "inspection": {
                 "title": "Inspektion",
+                "id": "ID",
+                "hive": "Stock",
+                "created_at": "Erstellt am",
                 "verified": "Manuell geprüft",
                 "notes": "Notizen",
                 "impression": "Eindruck",

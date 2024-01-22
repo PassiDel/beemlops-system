@@ -76,6 +76,9 @@
               "title": "Inspections",
               "inspection": {
                 "title": "Inspection",
+                "id": "ID",
+                "hive": "Hive",
+                "created_at": "Created at",
                 "verified": "Verified by User",
                 "notes": "Notes",
                 "impression": "Impression",

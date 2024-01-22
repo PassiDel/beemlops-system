@@ -3,6 +3,7 @@ import { subject } from '@casl/ability';
 import { prisma } from '~/server/utils/prisma';
 import { useAbility } from '~/server/casl';
 import { slugString } from '~/server/utils/zod';
+import { inspectionDto } from '~/server/dto/inspection';
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event as any);
@@ -75,5 +76,5 @@ export default defineEventHandler(async (event) => {
     })
   ]);
 
-  return { data, total, perPage: take };
+  return { data: data.map(inspectionDto), total, perPage: take };
 });

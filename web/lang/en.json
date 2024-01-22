@@ -75,7 +75,14 @@
             "inspections": {
               "title": "Inspections",
               "inspection": {
-                "title": "Inspection"
+                "title": "Inspection",
+                "verified": "Verified by User",
+                "notes": "Notes",
+                "impression": "Impression",
+                "timestamp": "Timestamp",
+                "actions": "Actions",
+                "true": "Yes",
+                "false": "No"
               },
               "create": {
                 "title": "Edit"

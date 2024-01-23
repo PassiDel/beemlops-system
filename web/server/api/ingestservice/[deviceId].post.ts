@@ -49,7 +49,7 @@ async function writeToInflux(
   deviceId: number,
   jsonData: Record<string, number>
 ) {
-  const { influxBucket, influxOrg } = useRuntimeConfig(event as H3Event);
+  const { influxBucket, influxOrg } = useRuntimeConfig(event as any);
   const writeClient = influxDB.getWriteApi(influxOrg, influxBucket);
 
   const point = new Point('measurement').tag('device', deviceId.toString());
@@ -71,7 +71,7 @@ export default defineEventHandler(async (event) => {
   const device = await validateDevice(deviceId);
   await validateKey(event, device);
 
-  const sensorKeys = await device.DeviceSensor.map(
+  const sensorKeys = device.DeviceSensor.map(
     (deviceSensor) => deviceSensor.key
   );
   const bodySchema = z.object(

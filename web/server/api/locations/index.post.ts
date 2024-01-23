@@ -9,51 +9,44 @@ export default defineEventHandler(async (event) => {
   const {
     slug,
     name,
-    desc,
-    location: locationSlug
+    team: teamSlug
   } = await useValidatedBody(
     event,
     z.object({
       slug: slugString,
-      location: slugString,
-      name: z.string().max(64).trim(),
-      desc: z.string().max(4096).trim()
+      team: slugString,
+      name: z.string().max(64).trim()
     })
   );
 
-  const location = await prisma.hiveLocation.findUnique({
+  const team = await prisma.team.findUnique({
     where: {
       deletedAt: null,
-      slug: locationSlug
+      slug: teamSlug
     },
     include: {
-      team: {
+      users: {
         include: {
-          users: {
-            include: {
-              user: true
-            }
-          },
-          creator: true
+          user: true
         }
-      }
+      },
+      creator: true
     }
   });
 
-  if (!location) {
+  if (!team) {
     throw createError({ status: 404, statusText: 'Not found!' });
   }
-  if (useAbility(event).cannot('update', subject('Team', location.team))) {
+  if (useAbility(event).cannot('update', subject('Team', team))) {
     throw createError({ status: 403, statusText: 'Not allowed!' });
   }
 
   try {
-    return await prisma.hive.create({
+    return await prisma.hiveLocation.create({
       data: {
         slug,
         name,
-        desc,
-        locationId: location.id
+        teamId: team.id
       },
       select: {
         slug: true

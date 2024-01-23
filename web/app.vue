@@ -30,6 +30,7 @@ const title = computed(() =>
       </template>
     </Head>
     <Body>
+      <NuxtLoadingIndicator />
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>

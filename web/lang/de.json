@@ -21,7 +21,8 @@
     "min_length": "{name} muss mindestens {min} Zeichen lang sein",
     "required": "{name} ist erforderlich",
     "invalid": "Ungültiges Format",
-    "taken": "Bereits vergeben"
+    "taken": "Bereits vergeben",
+    "date_range_past": "Zeitraum darf nicht in der Zukunft liegen"
   },
   "layouts": {
     "title": "{title} {'|'} System"
@@ -38,24 +39,6 @@
   },
   "refresh": "Neu laden",
   "dark_mode": "Dunkler Modus",
-  "cache": {
-    "title": "Cache",
-    "card": {
-      "title": "Cache Antwort"
-    }
-  },
-  "users": {
-    "title": "Nutzende",
-    "card": {
-      "title": "Nutzende"
-    },
-    "user": {
-      "title": "Nutzende",
-      "card": {
-        "title": "Nutzende Details"
-      }
-    }
-  },
   "profile": {
     "settings": {
       "title": "Einstellungen",
@@ -92,7 +75,17 @@
             "inspections": {
               "title": "Inspektionen",
               "inspection": {
-                "title": "Inspektion"
+                "title": "Inspektion",
+                "id": "ID",
+                "hive": "Stock",
+                "created_at": "Erstellt am",
+                "verified": "Manuell geprüft",
+                "notes": "Notizen",
+                "impression": "Eindruck",
+                "timestamp": "Zeitpunkt",
+                "actions": "Aktionen",
+                "true": "Ja",
+                "false": "Nein"
               },
               "create": {
                 "title": "Bearbeiten"
@@ -105,13 +98,19 @@
             "name": "Stockname",
             "create_new": "Erstelle einen neuen Stock",
             "create_for": "Für Standort: {name}"
-          }
+          },
+          "slug": "Slug",
+          "name": "Name",
+          "create_new": "Erstelle einen neuen Ort",
+          "create_for": "Für Team: {name}"
         }
       },
       "slug": "Slug",
       "name": "Teamname",
       "create_new": "Erstelle ein neues Team",
       "no_location": "Keinen Ort gefunden, erstelle vielleicht einen!",
+      "no_location_title": "Keinen Ort gefunden",
+      "no_location_content": "Lege vielleicht einen an?",
       "no_hive_title": "Kein Stock",
       "no_hive_content": "Lege vielleicht einen an?"
     }
@@ -133,5 +132,37 @@
       "title": "403 - Nicht erlaubt!",
       "content": "Du hast keine Berechtigung um diese Seite zu sehen!"
     }
+  },
+  "time_window": {
+    "pick": "Wähle einen Zeitraum",
+    "today": "Heute",
+    "24h": "Letzte 24h",
+    "7d": "Letzte 7d",
+    "30d": "Letzte 30d",
+    "this_week": "Diese Woche",
+    "this_month": "Dieser Monat",
+    "last_week": "Letzte Woche",
+    "last_month": "Letzter Monat"
+  },
+  "units": {
+    "temp": "Temperature",
+    "pressure": "Luftdruck",
+    "humidity": "Luftfeuchte",
+    "weight": "Gewicht",
+    "rssi": "RSSI"
+  },
+  "menu": {
+    "home": "Startseite",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "dashboard": "Dashboard",
+    "settings": "Einstellungen",
+    "teams": "Teams",
+    "team": "Team",
+    "locations": "Orte",
+    "hives": "Stöcke",
+    "hive": "Stock",
+    "inspections": "Inspektionen",
+    "new_inspection": "Neue Inspektion"
   }
 }

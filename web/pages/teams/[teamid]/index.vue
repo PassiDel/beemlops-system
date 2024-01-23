@@ -16,6 +16,7 @@ defineI18nRoute({
 const localePath = useLocalePath();
 const { teamid } = useRoute().params;
 
+const showModal = ref(false);
 const {
   data: _data,
   error,
@@ -48,6 +49,12 @@ const team = _data as Ref<TeamLocationHiveDto>;
           :to="`/teams/${teamid}/edit`"
           ><VaIcon name="edit"
         /></VaButton>
+        <CreateLocation
+          v-model:show-modal="showModal"
+          :team-slug="team.slug"
+          :team-name="team.name"
+          @update-list="refresh"
+        />
       </div>
       <div v-for="location in team.locations" :key="`l-${location.id}`">
         <VaDivider
@@ -77,6 +84,11 @@ const team = _data as Ref<TeamLocationHiveDto>;
             <VaCardTitle>{{ hive.name }}</VaCardTitle>
             <VaCardContent>
               <h2 class="text-2xl">{{ hive.name }}</h2>
+              <p
+                class="w-full text-pretty break-words overflow-y-auto mt-4 max-h-[10rem]"
+              >
+                {{ hive.desc }}
+              </p>
             </VaCardContent>
 
             <VaCardActions align="between">
@@ -108,14 +120,14 @@ const team = _data as Ref<TeamLocationHiveDto>;
             </VaCardContent>
 
             <VaCardActions align="between">
-              <VaValue v-slot="showModal">
+              <VaValue v-slot="show">
                 <VaButton
                   v-if="team.isCreator"
                   color="success"
-                  @click="showModal.value = !showModal.value"
+                  @click="show.value = !show.value"
                   >{{ $t('create') }}</VaButton
                 ><CreateHive
-                  v-model:show-modal="showModal.value"
+                  v-model:show-modal="show.value"
                   :team-slug="team.slug"
                   :location-slug="location.slug"
                   :location-name="location.name"
@@ -134,7 +146,31 @@ const team = _data as Ref<TeamLocationHiveDto>;
           {{ $t('teams.team.no_location') }}
         </VaDivider>
 
-        {{ $t('teams.team.no_location') }}
+        <div class="grid grid-cols-12 gap-6">
+          <VaCard
+            v-if="team.locations.length <= 0"
+            class="col-span-12 md:col-span-6 md:col-start-4 xl:col-span-4 xl:col-start-5"
+            stripe
+            stripe-color="warning"
+          >
+            <VaCardTitle>{{ $t('teams.team.no_location_title') }}</VaCardTitle>
+            <VaCardContent>
+              <h2 class="text-2xl">{{ $t('teams.team.no_location_title') }}</h2>
+              <span v-if="team.isCreator">{{
+                $t('teams.team.no_location_content')
+              }}</span>
+            </VaCardContent>
+
+            <VaCardActions align="between">
+              <VaButton
+                v-if="team.isCreator"
+                color="success"
+                @click="showModal = !showModal"
+                >{{ $t('create') }}</VaButton
+              >
+            </VaCardActions>
+          </VaCard>
+        </div>
       </div>
     </div>
     <VaSkeletonGroup v-else>

@@ -12,7 +12,7 @@ defineI18nRoute({
     de: '/teams/[teamid]/orte/[locationid]/[hiveid]'
   }
 });
-
+const localePath = useLocalePath();
 const { teamid, locationid, hiveid } = useRoute().params;
 
 const {
@@ -68,7 +68,9 @@ function newTimeWindow(range: { start: Date; end: Date }) {
         v-if="hive.isCreator"
         :disabled="pending"
         color="warning"
-        :to="`/teams/${teamid}/locations/${locationid}/${hiveid}/edit`"
+        :to="
+          localePath(`/teams/${teamid}/locations/${locationid}/${hiveid}/edit`)
+        "
         ><VaIcon name="edit"
       /></VaButton>
       <VaSpacer />

@@ -65,6 +65,7 @@ export default defineEventHandler(async (event) => {
             devices: [
               {
                 key: ds.key,
+                name: ds.name,
                 id: ds.id,
                 deviceId: ds.deviceId
               }
@@ -74,6 +75,7 @@ export default defineEventHandler(async (event) => {
         }
         a[index].devices.push({
           key: ds.key,
+          name: ds.name,
           id: ds.id,
           deviceId: ds.deviceId
         });
@@ -84,7 +86,12 @@ export default defineEventHandler(async (event) => {
         id: number;
         name: string;
         unit: string;
-        devices: { key: string | null; id: number; deviceId: number }[];
+        devices: {
+          key: string | null;
+          name: string | null;
+          id: number;
+          deviceId: number;
+        }[];
       }[]
     );
 

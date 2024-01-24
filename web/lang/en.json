@@ -96,6 +96,7 @@
             },
             "slug": "Slug",
             "name": "Hive name",
+            "desc": "Hive description",
             "create_new": "Create a new hive",
             "create_for": "For location: {name}"
           },

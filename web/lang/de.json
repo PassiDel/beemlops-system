@@ -96,6 +96,7 @@
             },
             "slug": "Slug",
             "name": "Stockname",
+            "desc": "Stock Beschreibung",
             "create_new": "Erstelle einen neuen Stock",
             "create_for": "Für Standort: {name}"
           },

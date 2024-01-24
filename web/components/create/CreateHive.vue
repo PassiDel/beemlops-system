@@ -128,16 +128,16 @@ async function checkSlug() {
       </VaInput>
       <VaTextarea
         v-model="form.desc"
-        :label="$t('teams.team.locations.location.hive.name')"
-        :placeholder="$t('teams.team.locations.location.hive.name')"
+        :label="$t('teams.team.locations.location.hive.desc')"
+        :placeholder="$t('teams.team.locations.location.hive.desc')"
         autosize
         :max-rows="10"
         required-mark
         counter
         :max-length="4069"
         :rules="[
-          validation.required($t('teams.team.locations.location.hive.name')),
-          validation.max($t('teams.team.locations.location.hive.name'), 4069)
+          validation.required($t('teams.team.locations.location.hive.desc')),
+          validation.max($t('teams.team.locations.location.hive.desc'), 4069)
         ]"
         required
       />

@@ -39,17 +39,17 @@ const showModal = ref(false);
         /></VaButton>
         <VaButton
           v-if="location.isCreator"
+          color="success"
+          :disabled="pending"
+          @click="showModal = !showModal"
+        ><VaIcon name="add"
+        /></VaButton>
+        <VaButton
+          v-if="location.isCreator"
           :disabled="pending"
           color="warning"
           :to="`/teams/${teamid}/locations/${locationid}/edit`"
           ><VaIcon name="edit"
-        /></VaButton>
-        <VaButton
-          v-if="location.isCreator"
-          color="success"
-          :disabled="pending"
-          @click="showModal = !showModal"
-          ><VaIcon name="add"
         /></VaButton>
         <CreateHive
           v-model:show-modal="showModal"

@@ -34,14 +34,14 @@ if (error && error.value) {
         <h1 class="text-3xl overflow-hidden overflow-ellipsis">
           {{ team.name }}
         </h1>
+        <VaButton color="primary" :disabled="pending" @click="refresh"
+        ><VaIcon name="refresh"
+        /></VaButton>
         <VaButton
           v-if="team.isCreator"
           color="success"
           @click="showModal = !showModal"
           ><VaIcon name="add"
-        /></VaButton>
-        <VaButton color="primary" :disabled="pending" @click="refresh"
-          ><VaIcon name="refresh"
         /></VaButton>
         <VaButton
           v-if="team.isCreator"

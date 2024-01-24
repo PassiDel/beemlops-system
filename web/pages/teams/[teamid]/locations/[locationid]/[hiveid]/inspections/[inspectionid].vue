@@ -13,9 +13,12 @@ const localePath = useLocalePath();
 const { locale } = useI18n();
 const { teamid, locationid, hiveid, inspectionid } = useRoute().params;
 
-const { data, pending, refresh } = await useFetch(
+const { data, pending, refresh, error } = await useFetch(
   `/api/inspections/${inspectionid}`
 );
+if (error && error.value) {
+  throw createError(error.value);
+}
 
 const updating = ref(false);
 
@@ -98,7 +101,7 @@ async function updateVerified(value: boolean) {
               }}
             </p>
             <p>{{ $t(labelPrefix + 'impression') }}</p>
-            <p><VaRating :model-value="data.impression" color="warning" /></p>
+            <p><VaRating :model-value="data.impression" readonly color="warning" /></p>
             <p>{{ $t(labelPrefix + 'notes') }}</p>
             <p class="text-pretty break-words">
               {{ data.notes }}

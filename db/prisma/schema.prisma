@@ -121,7 +121,8 @@ model Device {
 model DeviceSensor {
   id Int @id @default(autoincrement())
 
-  device   Device @relation(fields: [deviceId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  name     String?
+  device   Device  @relation(fields: [deviceId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   deviceId Int
 
   sensor   Sensor @relation(fields: [sensorId], references: [id], onUpdate: Cascade, onDelete: Cascade)

@@ -33,7 +33,12 @@ const props = defineProps<{
     id: number;
     name: string;
     unit: string;
-    devices: { key: string | null; id: number; deviceId: number }[];
+    devices: {
+      key: string | null;
+      name: string | null;
+      id: number;
+      deviceId: number;
+    }[];
   };
   data:
     | {
@@ -45,7 +50,7 @@ const props = defineProps<{
 
 const datasets = computed(() => ({
   datasets: props.sensor.devices.map((de) => ({
-    label: de.key || '',
+    label: de.name || de.key || '',
     data:
       props.data
         ?.find((d) => d.id === de.deviceId)

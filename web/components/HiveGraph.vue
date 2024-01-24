@@ -63,6 +63,14 @@ const datasets = computed(() => ({
       :options="{
         responsive: true,
         locale,
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: (ctx) =>
+                `${ctx.dataset.label}: ${ctx.parsed.y} ${props.sensor.unit}`
+            }
+          }
+        },
         scales: {
           x: {
             type: 'time',

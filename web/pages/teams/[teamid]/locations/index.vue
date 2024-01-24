@@ -35,7 +35,7 @@ if (error && error.value) {
           {{ team.name }}
         </h1>
         <VaButton color="primary" :disabled="pending" @click="refresh"
-        ><VaIcon name="refresh"
+          ><VaIcon name="refresh"
         /></VaButton>
         <VaButton
           v-if="team.isCreator"

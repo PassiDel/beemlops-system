@@ -101,7 +101,13 @@ async function updateVerified(value: boolean) {
               }}
             </p>
             <p>{{ $t(labelPrefix + 'impression') }}</p>
-            <p><VaRating :model-value="data.impression" readonly color="warning" /></p>
+            <p>
+              <VaRating
+                :model-value="data.impression"
+                readonly
+                color="warning"
+              />
+            </p>
             <p>{{ $t(labelPrefix + 'notes') }}</p>
             <p class="text-pretty break-words">
               {{ data.notes }}

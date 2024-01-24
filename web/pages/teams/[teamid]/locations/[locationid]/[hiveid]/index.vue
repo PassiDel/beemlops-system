@@ -68,7 +68,9 @@ function newTimeWindow(range: { start: Date; end: Date }) {
         v-if="hive.isCreator"
         :disabled="pending"
         color="warning"
-        :to="localePath(`/teams/${teamid}/locations/${locationid}/${hiveid}/edit`)"
+        :to="
+          localePath(`/teams/${teamid}/locations/${locationid}/${hiveid}/edit`)
+        "
         ><VaIcon name="edit"
       /></VaButton>
       <VaSpacer />

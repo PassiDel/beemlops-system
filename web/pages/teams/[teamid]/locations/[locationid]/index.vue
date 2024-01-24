@@ -42,7 +42,7 @@ const showModal = ref(false);
           color="success"
           :disabled="pending"
           @click="showModal = !showModal"
-        ><VaIcon name="add"
+          ><VaIcon name="add"
         /></VaButton>
         <VaButton
           v-if="location.isCreator"

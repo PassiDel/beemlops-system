@@ -22,7 +22,8 @@
     "required": "{name} ist erforderlich",
     "invalid": "Ungültiges Format",
     "taken": "Bereits vergeben",
-    "date_range_past": "Zeitraum darf nicht in der Zukunft liegen"
+    "date_range_past": "Zeitraum darf nicht in der Zukunft liegen",
+    "date_past": "Zeit darf nicht in der Zukunft liegen"
   },
   "layouts": {
     "title": "{title} {'|'} System"
@@ -88,7 +89,7 @@
                 "false": "Nein"
               },
               "create": {
-                "title": "Bearbeiten"
+                "title": "Erstelle eine neue Inspektion"
               }
             },
             "edit": {

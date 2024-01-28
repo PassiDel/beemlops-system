@@ -27,6 +27,13 @@ export default function () {
           ? new Date(model.start).getTime() < Date.now() &&
             new Date(model.end).getTime() < Date.now()
           : true) || t('validation.date_range_past');
+    },
+    dateIsPast() {
+      return (model: DateInputModelValue) =>
+        (model &&
+          isDateModel(model) &&
+          new Date(model).getTime() < Date.now()) ||
+        t('validation.date_range_past');
     }
   } as const;
 }
@@ -39,5 +46,14 @@ function isRangeModel(
     typeof model === 'object' &&
     (model as DateInputRange<any>)?.end !== undefined &&
     (model as DateInputRange<any>)?.start !== undefined
+  );
+}
+
+function isDateModel(model: DateInputModelValue): model is DateInputDate {
+  return (
+    !!model &&
+    ['string', 'object', 'number'].includes(typeof model) &&
+    (model as DateInputRange<any>)?.end === undefined &&
+    (model as DateInputRange<any>)?.start === undefined
   );
 }

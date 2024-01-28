@@ -22,7 +22,8 @@
     "required": "{name} is required",
     "invalid": "Invalid format",
     "taken": "Already taken",
-    "date_range_past": "Date range cannot be in the future"
+    "date_range_past": "Date range cannot be in the future",
+    "date_past": "Date cannot be in the future"
   },
   "layouts": {
     "title": "{title} {'|'} System"
@@ -88,7 +89,7 @@
                 "false": "No"
               },
               "create": {
-                "title": "Edit"
+                "title": "Create a new inspection"
               }
             },
             "edit": {

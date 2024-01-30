@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForm, type VaSelect } from 'vuestic-ui';
+import { useForm } from 'vuestic-ui';
 import useValidation from '~/composables/useValidation';
 
 definePageMeta({
@@ -41,6 +41,7 @@ async function createInspection() {
       )
     );
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error(e);
   }
 }

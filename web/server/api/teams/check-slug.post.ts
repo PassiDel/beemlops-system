@@ -4,16 +4,20 @@ import { slugString } from '~/server/utils/zod';
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event as any);
-  const { slug } = await useValidatedBody(
+  const { slug, id } = await useValidatedBody(
     event,
     z.object({
-      slug: slugString
+      slug: slugString,
+      id: z.number().int().optional()
     })
   );
 
   const team = await prisma.team.findUnique({
     where: {
-      slug
+      slug,
+      NOT: {
+        id
+      }
     },
     select: {
       id: true

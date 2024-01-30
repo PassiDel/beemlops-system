@@ -23,7 +23,8 @@
     "invalid": "Invalid format",
     "taken": "Already taken",
     "date_range_past": "Date range cannot be in the future",
-    "date_past": "Date cannot be in the future"
+    "date_past": "Date cannot be in the future",
+    "confirm": "Are you sure?"
   },
   "layouts": {
     "title": "{title} {'|'} System"

@@ -23,7 +23,8 @@
     "invalid": "Ungültiges Format",
     "taken": "Bereits vergeben",
     "date_range_past": "Zeitraum darf nicht in der Zukunft liegen",
-    "date_past": "Zeit darf nicht in der Zukunft liegen"
+    "date_past": "Zeit darf nicht in der Zukunft liegen",
+    "confirm": "Sind Sie sich sicher?"
   },
   "layouts": {
     "title": "{title} {'|'} System"

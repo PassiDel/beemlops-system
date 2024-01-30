@@ -105,7 +105,11 @@
           "slug": "Slug",
           "name": "Name",
           "create_new": "Erstelle einen neuen Ort",
-          "create_for": "Für Team: {name}"
+          "create_for": "Für Team: {name}",
+          "lat": "Breitengrad: {lat} °",
+          "lng": "Längengrad: {lng} °",
+          "no_lat": "Keine Koordinaten für diesen Standort gesetzt",
+          "no_lng": "Klicke auf die Karte um die Koordinaten zu übernehmen"
         }
       },
       "slug": "Slug",
@@ -120,6 +124,7 @@
   },
   "open": "Öffnen",
   "edit": "Bearbeiten",
+  "save": "Speichern",
   "regenerate": "Regenerieren",
   "create": "Erstellen",
   "close": "Schließen",

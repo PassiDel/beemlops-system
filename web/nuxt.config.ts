@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     'nuxt-auth-utils',
     '@vuestic/nuxt',
-    'nuxt-route-meta'
+    'nuxt-route-meta',
+    'nuxt3-leaflet'
   ],
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }

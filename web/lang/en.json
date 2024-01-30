@@ -105,7 +105,11 @@
           "slug": "Slug",
           "name": "Name",
           "create_new": "Create a new location",
-          "create_for": "For team: {name}"
+          "create_for": "For team: {name}",
+          "lat": "Latitude: {lat} °",
+          "lng": "Longitude: {lng} °",
+          "no_lat": "No coordinates for this location",
+          "no_lng": "Click on the map to set a coordinate"
         }
       },
       "slug": "Slug",
@@ -120,6 +124,7 @@
   },
   "open": "Open",
   "edit": "Edit",
+  "save": "Save",
   "regenerate": "Regenerate",
   "create": "Create",
   "close": "Close",

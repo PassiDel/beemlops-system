@@ -38,6 +38,7 @@
     "nuxt": "^3.8.1",
     "nuxt-auth-utils": "^0.0.6",
     "nuxt-route-meta": "^4.0.0",
+    "nuxt3-leaflet": "^1.0.12",
     "pinia": "^2.1.7",
     "postcss": "^8.4.32",
     "rabbitmq-client": "^4.4.0",

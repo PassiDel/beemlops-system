@@ -46,7 +46,7 @@ async function submit() {
     body: form
   });
   resetValidation();
-  await refresh();
+  await router.push(localePath(`/teams/${form.slug || teamid}`));
 }
 
 const userForm = reactive({
@@ -169,7 +169,7 @@ async function checkSlug() {
           </VaInput>
 
           <VaButton type="submit" :disabled="!isValid || !isNew">{{
-            $t('teams.team.edit.title')
+            $t('save')
           }}</VaButton>
         </VaForm>
       </VaCardContent></VaCard

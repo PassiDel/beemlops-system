@@ -64,10 +64,5 @@ function isRangeModel(
 }
 
 function isDateModel(model: DateInputModelValue): model is DateInputDate {
-  return (
-    !!model &&
-    ['string', 'object', 'number'].includes(typeof model) &&
-    (model as DateInputRange<any>)?.end === undefined &&
-    (model as DateInputRange<any>)?.start === undefined
-  );
+  return !!model && !isNaN(new Date(model as any).getTime());
 }

@@ -1,10 +1,10 @@
-import { prisma } from '~/server/utils/prisma';
 import { useValidatedParams, z } from 'h3-zod';
-import { useAbility } from '~/server/casl';
 import { subject } from '@casl/ability';
-import { useRuntimeConfig } from '#imports';
 import type { H3Event } from 'h3';
 import { QueryApi } from '@influxdata/influxdb-client';
+import { useRuntimeConfig } from '#imports';
+import { useAbility } from '~/server/casl';
+import { prisma } from '~/server/utils/prisma';
 import { restructureGraphData } from '~/server/api/hives/[hiveid]/data.get';
 
 const getTotal = defineCachedFunction(

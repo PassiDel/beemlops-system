@@ -15,6 +15,8 @@ import {
   Tooltip
 } from 'chart.js';
 
+import zoomPlugin from 'chartjs-plugin-zoom';
+
 ChartJS.register(
   Title,
   PointElement,
@@ -24,7 +26,8 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   TimeScale,
-  Colors
+  Colors,
+  zoomPlugin
 );
 const { locale } = useI18n();
 
@@ -62,45 +65,56 @@ const datasets = computed(() => ({
 </script>
 
 <template>
-  <ClientOnly>
-    <Line
-      v-if="data"
-      :options="{
-        responsive: true,
-        locale,
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: (ctx) =>
-                `${ctx.dataset.label}: ${ctx.parsed.y} ${props.sensor.unit}`
+  <Line
+    v-if="data"
+    :options="{
+      responsive: true,
+      locale,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: (ctx) =>
+              `${ctx.dataset.label}: ${ctx.parsed.y} ${props.sensor.unit}`
+          }
+        },
+        zoom: {
+          zoom: {
+            wheel: {
+              enabled: true
+            },
+            pinch: {
+              enabled: true
+            },
+            mode: 'xy'
+          },
+          pan: {
+            enabled: true
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            unit: 'day'
+          },
+          adapters: {
+            date: {
+              locale: locale === 'de' ? de : enUS
             }
           }
         },
-        scales: {
-          x: {
-            type: 'time',
-            time: {
-              unit: 'day'
-            },
-            adapters: {
-              date: {
-                locale: locale === 'de' ? de : enUS
-              }
-            }
-          },
-          y: {
-            title: {
-              display: true,
-              text: props.sensor.unit
-            }
+        y: {
+          title: {
+            display: true,
+            text: props.sensor.unit
           }
         }
-      }"
-      :data="datasets as any" />
-    <VaSkeleton v-else variant="squared" height="12rem" animation="wave" />
-    <template #fallback>
-      <VaSkeleton variant="squared" height="10rem" animation="wave" /></template
-  ></ClientOnly>
+      }
+    }"
+    :data="datasets as any"
+  />
+  <VaSkeleton v-else variant="squared" height="12rem" animation="wave" />
 </template>
 
 <style scoped></style>

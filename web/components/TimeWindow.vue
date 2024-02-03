@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { VaSelect } from 'vuestic-ui';
 import {
+  endOfDay,
   endOfMonth,
   endOfWeek,
   startOfDay,
@@ -14,8 +15,8 @@ import {
 
 const { t } = useI18n();
 const range = ref({
-  start: subDays(new Date(), 1),
-  end: new Date()
+  start: startOfDay(subDays(new Date(), 1)),
+  end: endOfDay(new Date())
 });
 
 const validation = useValidation();
@@ -79,7 +80,8 @@ function selected(value: (typeof selectOptions.value)[0] | undefined) {
   if (!value) {
     return;
   }
-  range.value = value.data();
+  const { start, end } = value.data();
+  range.value = { start: startOfDay(start), end: endOfDay(end) };
   emit('update', range.value);
 }
 
@@ -94,7 +96,8 @@ function refresh() {
   if (!select.value) {
     return;
   }
-  range.value = select.value.data();
+  const { start, end } = select.value.data();
+  range.value = { start: startOfDay(start), end: endOfDay(end) };
   emit('update', range.value);
 }
 emit('update', range.value);

@@ -48,7 +48,13 @@
     }
   },
   "dashboard": {
-    "title": "Dashboard"
+    "title": "Dashboard",
+    "total": {
+      "measurements": "Messwerte",
+      "total": "Insgesamt",
+      "last24": "In den letzten 24h",
+      "last": "Letzter"
+    }
   },
   "imprint": {
     "title": "Impressum"

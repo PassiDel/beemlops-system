@@ -6,6 +6,47 @@ import { useAbility } from '~/server/casl';
 import { useRuntimeConfig } from '#imports';
 import { slugString, ufoDate } from '~/server/utils/zod';
 
+export function restructureGraphData(
+  res: { _time: any; _field: any; device: any; _value: any }[]
+) {
+  return res.reduce(
+    (a, r) => {
+      const did = parseInt(r.device);
+      const data = { x: r._time, y: r._value };
+      const dI = a.findIndex((d) => d.id === did);
+      const key = r._field;
+      if (dI < 0) {
+        a.push({
+          id: did,
+          keys: [
+            {
+              key,
+              data: [data]
+            }
+          ]
+        });
+        return a;
+      }
+      const kI = a[dI].keys.findIndex((k) => k.key === key);
+      if (kI < 0) {
+        a[dI].keys.push({
+          key,
+          data: [data]
+        });
+        return a;
+      }
+
+      a[dI].keys[kI].data.push(data);
+
+      return a;
+    },
+    [] as {
+      id: number;
+      keys: { key: string; data: { x: string; y: number }[] }[];
+    }[]
+  );
+}
+
 export default defineCachedEventHandler(
   async (event) => {
     await requireUserSession(event as any);
@@ -78,44 +119,7 @@ export default defineCachedEventHandler(
         return { _time, _field, device, _value };
       })
       .catch(() => [])
-      .then((res) =>
-        res.reduce(
-          (a, r) => {
-            const did = parseInt(r.device);
-            const data = { x: r._time, y: r._value };
-            const dI = a.findIndex((d) => d.id === did);
-            const key = r._field;
-            if (dI < 0) {
-              a.push({
-                id: did,
-                keys: [
-                  {
-                    key,
-                    data: [data]
-                  }
-                ]
-              });
-              return a;
-            }
-            const kI = a[dI].keys.findIndex((k) => k.key === key);
-            if (kI < 0) {
-              a[dI].keys.push({
-                key,
-                data: [data]
-              });
-              return a;
-            }
-
-            a[dI].keys[kI].data.push(data);
-
-            return a;
-          },
-          [] as {
-            id: number;
-            keys: { key: string; data: { x: string; y: number }[] }[];
-          }[]
-        )
-      );
+      .then(restructureGraphData);
   },
   { swr: true, maxAge: 60 }
 );

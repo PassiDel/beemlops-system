@@ -32,7 +32,12 @@ const hive = _hive as unknown as Ref<
       id: number;
       name: string;
       unit: string;
-      devices: { key: string | null; id: number; deviceId: number }[];
+      devices: {
+        key: string | null;
+        name: string | null;
+        id: number;
+        deviceId: number;
+      }[];
     }[];
   }
 >;

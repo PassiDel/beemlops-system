@@ -3,6 +3,7 @@ import type {
   DateInputModelValue,
   DateInputRange
 } from 'vuestic-ui/dist/types/components/va-date-input/types';
+import { undefined } from 'zod';
 
 export default function () {
   const { t } = useI18n();
@@ -34,6 +35,19 @@ export default function () {
           isDateModel(model) &&
           new Date(model).getTime() < Date.now()) ||
         t('validation.date_range_past');
+    },
+    numeric(name: string) {
+      return (value: string) =>
+        (value &&
+          !isNaN(parseFloat(value)) &&
+          value?.split(' ').length === 1) ||
+        t('validation.numeric', { name });
+    },
+    numericOptional(name: string) {
+      return (value: string | undefined) =>
+        !value ||
+        (!isNaN(parseFloat(value)) && value?.split(' ').length === 1) ||
+        t('validation.numeric', { name });
     }
   } as const;
 }

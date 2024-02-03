@@ -19,6 +19,8 @@
   "validation": {
     "max_length": "{name} has to be max {max} chars long",
     "min_length": "{name} has to at least {min} chars long",
+    "numeric": "{name} need to be numeric",
+    "min_array": "You need at least {min} {name}",
     "required": "{name} is required",
     "invalid": "Invalid format",
     "taken": "Already taken",
@@ -93,12 +95,33 @@
                 "title": "Create a new inspection"
               }
             },
+            "devices": "Devices",
+            "device": {
+              "key": "Secret key",
+              "sensors": "Sensors",
+              "name": "Name",
+              "new": "New Device",
+              "device_sensor": {
+                "name": "Name",
+                "key": "Key",
+                "unique_key": "Key has to be unique!",
+                "key_show": "Key: {key}",
+                "name_key": "{name} - {key}",
+                "sensor_type": "Sensor",
+                "sensor": {
+                  "name": "Sensor name",
+                  "unit": "Sensor unit",
+                  "type": "Type: {sensor} ({unit})"
+                }
+              }
+            },
             "edit": {
               "title": "Edit"
             },
             "slug": "Slug",
             "name": "Hive name",
             "desc": "Hive description",
+            "raw_weight": "Raw weight",
             "create_new": "Create a new hive",
             "create_for": "For location: {name}"
           },
@@ -124,6 +147,7 @@
   },
   "open": "Open",
   "edit": "Edit",
+  "delete": "Delete",
   "save": "Save",
   "regenerate": "Regenerate",
   "create": "Create",
@@ -159,6 +183,7 @@
     "weight": "Weight",
     "rssi": "RSSI"
   },
+  "unit_name_with_unit": "{name} - {unit}",
   "menu": {
     "home": "Home",
     "login": "Login",

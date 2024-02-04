@@ -27,6 +27,26 @@ export default function () {
           ? new Date(model.start).getTime() < Date.now() &&
             new Date(model.end).getTime() < Date.now()
           : true) || t('validation.date_range_past');
+    },
+    dateIsPast() {
+      return (model: DateInputModelValue) =>
+        (model &&
+          isDateModel(model) &&
+          new Date(model).getTime() < Date.now()) ||
+        t('validation.date_range_past');
+    },
+    numeric(name: string) {
+      return (value: string) =>
+        (value &&
+          !isNaN(parseFloat(value)) &&
+          value?.split(' ').length === 1) ||
+        t('validation.numeric', { name });
+    },
+    numericOptional(name: string) {
+      return (value: string | undefined) =>
+        !value ||
+        (!isNaN(parseFloat(value)) && value?.split(' ').length === 1) ||
+        t('validation.numeric', { name });
     }
   } as const;
 }
@@ -40,4 +60,8 @@ function isRangeModel(
     (model as DateInputRange<any>)?.end !== undefined &&
     (model as DateInputRange<any>)?.start !== undefined
   );
+}
+
+function isDateModel(model: DateInputModelValue): model is DateInputDate {
+  return !!model && !isNaN(new Date(model as any).getTime());
 }

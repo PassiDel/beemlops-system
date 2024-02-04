@@ -19,10 +19,14 @@
   "validation": {
     "max_length": "{name} has to be max {max} chars long",
     "min_length": "{name} has to at least {min} chars long",
+    "numeric": "{name} need to be numeric",
+    "min_array": "You need at least {min} {name}",
     "required": "{name} is required",
     "invalid": "Invalid format",
     "taken": "Already taken",
-    "date_range_past": "Date range cannot be in the future"
+    "date_range_past": "Date range cannot be in the future",
+    "date_past": "Date cannot be in the future",
+    "confirm": "Are you sure?"
   },
   "layouts": {
     "title": "{title} {'|'} System"
@@ -88,7 +92,27 @@
                 "false": "No"
               },
               "create": {
-                "title": "Edit"
+                "title": "Create a new inspection"
+              }
+            },
+            "devices": "Devices",
+            "device": {
+              "key": "Secret key",
+              "sensors": "Sensors",
+              "name": "Name",
+              "new": "New Device",
+              "device_sensor": {
+                "name": "Name",
+                "key": "Key",
+                "unique_key": "Key has to be unique!",
+                "key_show": "Key: {key}",
+                "name_key": "{name} - {key}",
+                "sensor_type": "Sensor",
+                "sensor": {
+                  "name": "Sensor name",
+                  "unit": "Sensor unit",
+                  "type": "Type: {sensor} ({unit})"
+                }
               }
             },
             "edit": {
@@ -97,13 +121,18 @@
             "slug": "Slug",
             "name": "Hive name",
             "desc": "Hive description",
+            "raw_weight": "Raw weight",
             "create_new": "Create a new hive",
             "create_for": "For location: {name}"
           },
           "slug": "Slug",
           "name": "Name",
           "create_new": "Create a new location",
-          "create_for": "For team: {name}"
+          "create_for": "For team: {name}",
+          "lat": "Latitude: {lat} °",
+          "lng": "Longitude: {lng} °",
+          "no_lat": "No coordinates for this location",
+          "no_lng": "Click on the map to set a coordinate"
         }
       },
       "slug": "Slug",
@@ -118,6 +147,8 @@
   },
   "open": "Open",
   "edit": "Edit",
+  "delete": "Delete",
+  "save": "Save",
   "regenerate": "Regenerate",
   "create": "Create",
   "close": "Close",
@@ -152,6 +183,7 @@
     "weight": "Weight",
     "rssi": "RSSI"
   },
+  "unit_name_with_unit": "{name} - {unit}",
   "menu": {
     "home": "Home",
     "login": "Login",

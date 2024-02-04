@@ -19,10 +19,14 @@
   "validation": {
     "max_length": "{name} darf maximal {max} Zeichen lang sein",
     "min_length": "{name} muss mindestens {min} Zeichen lang sein",
+    "numeric": "{name} muss numerisch sein",
+    "min_array": "Du brauchst mindestens {min} {name}",
     "required": "{name} ist erforderlich",
     "invalid": "Ungültiges Format",
     "taken": "Bereits vergeben",
-    "date_range_past": "Zeitraum darf nicht in der Zukunft liegen"
+    "date_range_past": "Zeitraum darf nicht in der Zukunft liegen",
+    "date_past": "Zeit darf nicht in der Zukunft liegen",
+    "confirm": "Sind Sie sich sicher?"
   },
   "layouts": {
     "title": "{title} {'|'} System"
@@ -88,7 +92,27 @@
                 "false": "Nein"
               },
               "create": {
-                "title": "Bearbeiten"
+                "title": "Erstelle eine neue Inspektion"
+              }
+            },
+            "devices": "Geräte",
+            "device": {
+              "key": "Geheimer Schlüssel",
+              "sensors": "Sensoren",
+              "name": "Name",
+              "new": "Neues Gerät",
+              "device_sensor": {
+                "name": "Name",
+                "key": "Attributname",
+                "unique_key": "Attributname muss eindeutig sein!",
+                "key_show": "Attributname: {key}",
+                "name_key": "{name} - {key}",
+                "sensor_type": "Sensor",
+                "sensor": {
+                  "name": "Sensorname",
+                  "unit": "Sensoreinheit",
+                  "type": "Typ: {sensor} ({unit})"
+                }
               }
             },
             "edit": {
@@ -97,13 +121,18 @@
             "slug": "Slug",
             "name": "Stockname",
             "desc": "Stock Beschreibung",
+            "raw_weight": "Rohgewicht",
             "create_new": "Erstelle einen neuen Stock",
             "create_for": "Für Standort: {name}"
           },
           "slug": "Slug",
           "name": "Name",
           "create_new": "Erstelle einen neuen Ort",
-          "create_for": "Für Team: {name}"
+          "create_for": "Für Team: {name}",
+          "lat": "Breitengrad: {lat} °",
+          "lng": "Längengrad: {lng} °",
+          "no_lat": "Keine Koordinaten für diesen Standort gesetzt",
+          "no_lng": "Klicke auf die Karte um die Koordinaten zu übernehmen"
         }
       },
       "slug": "Slug",
@@ -118,6 +147,8 @@
   },
   "open": "Öffnen",
   "edit": "Bearbeiten",
+  "delete": "Löschen",
+  "save": "Speichern",
   "regenerate": "Regenerieren",
   "create": "Erstellen",
   "close": "Schließen",
@@ -146,12 +177,13 @@
     "last_month": "Letzter Monat"
   },
   "units": {
-    "temp": "Temperature",
+    "temp": "Temperatur",
     "pressure": "Luftdruck",
     "humidity": "Luftfeuchte",
     "weight": "Gewicht",
     "rssi": "RSSI"
   },
+  "unit_name_with_unit": "{name} - {unit}",
   "menu": {
     "home": "Startseite",
     "login": "Anmelden",

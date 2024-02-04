@@ -31,7 +31,11 @@ export default defineEventHandler(async (event) => {
   if (!team) {
     throw createError({ status: 404, statusText: 'Not found!' });
   }
-  if (useAbility(event).cannot('update', subject('Team', team))) {
+  const loggedInUser = (await getUserSession(event as any)).user;
+  if (
+    useAbility(event).cannot('update', subject('Team', team)) ||
+    loggedInUser.id === userid
+  ) {
     throw createError({ status: 403, statusText: 'Not allowed!' });
   }
 

@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
   if (!team) {
     throw createError({ status: 404, statusText: 'Not found!' });
   }
-  if (useAbility(event).cannot('read', subject('Team', team))) {
+  if (useAbility(event).cannot('update', subject('Team', team))) {
     throw createError({ status: 403, statusText: 'Not allowed!' });
   }
 

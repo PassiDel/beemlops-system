@@ -14,6 +14,7 @@ export default defineEventHandler(async (event) => {
 
   const device = await prisma.device.findUnique({
     where: {
+      deletedAt: null,
       id: deviceid
     },
     include: {

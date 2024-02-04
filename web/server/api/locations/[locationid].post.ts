@@ -15,6 +15,7 @@ export default defineEventHandler(async (event) => {
 
   const location = await prisma.hiveLocation.findUnique({
     where: {
+      deletedAt: null,
       slug: locationid
     },
     include: {

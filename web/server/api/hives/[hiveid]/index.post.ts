@@ -15,6 +15,7 @@ export default defineEventHandler(async (event) => {
 
   const hive = await prisma.hive.findUnique({
     where: {
+      deletedAt: null,
       slug: hiveid
     },
     include: {

@@ -53,20 +53,16 @@ export default defineEventHandler(async (event) => {
     throw createError({ status: 403, statusText: 'Not allowed!' });
   }
 
-  try {
-    return await prisma.inspection.create({
-      data: {
-        timestamp,
-        hiveId: hive.id,
-        verifiedByUser,
-        notes,
-        impression
-      },
-      select: {
-        id: true
-      }
-    });
-  } catch (_) {
-    throw createError({ status: 500, statusText: 'Something went wrong!' });
-  }
+  return await prisma.inspection.create({
+    data: {
+      timestamp,
+      hiveId: hive.id,
+      verifiedByUser,
+      notes,
+      impression
+    },
+    select: {
+      id: true
+    }
+  });
 });

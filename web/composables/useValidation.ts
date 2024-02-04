@@ -3,7 +3,6 @@ import type {
   DateInputModelValue,
   DateInputRange
 } from 'vuestic-ui/dist/types/components/va-date-input/types';
-import { undefined } from 'zod';
 
 export default function () {
   const { t } = useI18n();

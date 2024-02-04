@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
   if (!hive) {
     throw createError({ status: 404, statusText: 'Not found!' });
   }
-  if (useAbility(event).cannot('read', subject('Team', hive.location.team))) {
+  if (useAbility(event).cannot('update', subject('Team', hive.location.team))) {
     throw createError({ status: 403, statusText: 'Not allowed!' });
   }
 

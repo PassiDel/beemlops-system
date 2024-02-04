@@ -15,6 +15,7 @@ export default defineEventHandler(async (event) => {
 
   const team = await prisma.team.findUnique({
     where: {
+      deletedAt: null,
       slug: teamid
     },
     include: {

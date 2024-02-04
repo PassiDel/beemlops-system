@@ -190,7 +190,11 @@ async function checkSlug() {
             class="list__item"
           >
             <VaListItemSection avatar>
-              <VaAvatar> </VaAvatar>
+              <VaAvatar
+                :src="user.profilePicture"
+                :title="user.name"
+                :alt="user.name"
+              />
             </VaListItemSection>
 
             <VaListItemSection>

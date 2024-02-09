@@ -9,6 +9,8 @@ const head = useLocaleHead({
 const title = computed(() =>
   t('layouts.title', { title: t(route.meta.title ?? 'default.title') })
 );
+
+useNotification();
 </script>
 <template>
   <Html

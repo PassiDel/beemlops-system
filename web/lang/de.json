@@ -184,6 +184,18 @@
     "rssi": "RSSI"
   },
   "unit_name_with_unit": "{name} - {unit}",
+  "sse": {
+    "notify": {
+      "team_promote": {
+        "title": "Team Beförderung",
+        "message": "Du wurdest zum Team Ersteller befördert!"
+      },
+      "team_invite": {
+        "title": "Team Einladung",
+        "message": "Du wurdest zu einem Team eingeladen!"
+      }
+    }
+  },
   "menu": {
     "home": "Startseite",
     "login": "Anmelden",

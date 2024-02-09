@@ -3,6 +3,7 @@ import { subject } from '@casl/ability';
 import { slugString } from '~/server/utils/zod';
 import { prisma } from '~/server/utils/prisma';
 import { useAbility } from '~/server/casl';
+import { emitRedis } from '~/server/utils/sse';
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event as any);
@@ -59,6 +60,12 @@ export default defineEventHandler(async (event) => {
       teamId: team.id,
       userId: user.id
     }
+  });
+  emitRedis(`sse:event:${user.id}`, 'notify', {
+    title: 'sse.notify.team_invite.title',
+    message: 'sse.notify.team_invite.message',
+    color: 'success',
+    link: `/teams/${team.slug}`
   });
 
   return true;

@@ -3,6 +3,7 @@ import { subject } from '@casl/ability';
 import { slugString } from '~/server/utils/zod';
 import { prisma } from '~/server/utils/prisma';
 import { useAbility } from '~/server/casl';
+import { emitRedis } from '~/server/utils/sse';
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event as any);
@@ -42,6 +43,12 @@ export default defineEventHandler(async (event) => {
   await prisma.team.update({
     where: { id: team.id },
     data: { creatorId: userid }
+  });
+  emitRedis(`sse:event:${userid}`, 'notify', {
+    title: 'sse.notify.team_promote.title',
+    message: 'sse.notify.team_promote.message',
+    color: 'success',
+    link: `/teams/${team.slug}`
   });
   return true;
 });
